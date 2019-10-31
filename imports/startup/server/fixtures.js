@@ -8,5 +8,13 @@ Meteor.startup(() => {
       email: "user@email.com",
       password: "password"
     });
+    user = Accounts.createUser({
+      email: "madisonhunter@email.com",
+      password: "password"
+    });
+    user = Accounts.createUser({
+      email: "joeykramer@email.com",
+      password: "password"
+    });
   }
 });

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import ToDoInput from "../../components/ToDoInput";
+import { Recipients } from "../../pages";
 import AccountsUIWrapper from "../../components/AccountsWrapper";
 import { withTracker } from "meteor/react-meteor-data";
 
@@ -13,7 +13,7 @@ class _App extends Component {
   render() {
     return (
       <div className="login-wrapper">
-        <div>Holla</div>
+        <Recipients />
       </div>
     );
   }
