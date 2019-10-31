@@ -13,13 +13,13 @@ class _App extends Component {
   render() {
     return (
       <div className="login-wrapper">
-        <AccountsUIWrapper />
+        <div>Holla</div>
       </div>
     );
   }
 }
 
-export const App = withTracker(() => {
+export default App = withTracker(() => {
   return {
     // todos: ToDos.find({}).fetch(),
     // currentUser: Meteor.user(),
