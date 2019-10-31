@@ -22,7 +22,7 @@ class _App extends Component {
 export default App = withTracker(() => {
   return {
     // todos: ToDos.find({}).fetch(),
-    // currentUser: Meteor.user(),
-    // currentUserId: Meteor.userId()
+    currentUser: Meteor.user(),
+    currentUserId: Meteor.userId()
   };
 })(_App);
