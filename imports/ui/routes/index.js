@@ -5,9 +5,9 @@ import PrivateRoute from "../components/PrivateRoute";
 import AccountLogin from "../pages/AccountLogin";
 import RegisterPage from "../pages/RegisterPage";
 import Recipients from "../pages/Recipients";
-// import YourOrders from "../pages/";
-// import OthersOrders from "../pages";
-// import Profile from "../pages";
+import YourOrders from "../pages/YourOrders";
+import OthersOrders from "../pages/OthersOrders";
+import Profile from "../pages/Profile";
 import { withTracker } from "meteor/react-meteor-data";
 
 const _Routes = ({ currentUserId }) => {
