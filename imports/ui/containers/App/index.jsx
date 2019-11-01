@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-//import ToDoInput from "../../components/ToDoInput";
+// import ToDoInput from "../../components/ToDoInput";
 import AccountsUIWrapper from "../../components/AccountsWrapper";
 import { withTracker } from "meteor/react-meteor-data";
+import { AccountLogin } from "../../pages/";
 
 class _App extends Component {
   constructor() {
@@ -13,13 +14,13 @@ class _App extends Component {
   render() {
     return (
       <div className="login-wrapper">
-        <AccountsUIWrapper />
+        <AccountLogin />
       </div>
     );
   }
 }
 
-export const App = withTracker(() => {
+export default App = withTracker(() => {
   return {
     // todos: ToDos.find({}).fetch(),
     // currentUser: Meteor.user(),
