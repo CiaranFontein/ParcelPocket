@@ -11,7 +11,8 @@ const styles = (theme) => ({
       marginLeft: "auto",
       marginRight: "auto",
       border: "1px solid black",
-      padding: 10
+      padding: 10,
+      marginBottom: 30
    },
    logo: {
       width: "8vw"
@@ -112,7 +113,7 @@ const styles = (theme) => ({
       textAlign: "right",
       marginTop: 30,
       width: "94%",
-      margin: 0,
+      marginBottom: 20,
       marginLeft: "auto",
       marginRight: "auto"
    },

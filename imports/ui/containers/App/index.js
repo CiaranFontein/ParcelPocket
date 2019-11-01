@@ -13,11 +13,7 @@ class _App extends Component {
    }
 
    render() {
-      return (
-         // <Container maxWidth="lg">
-         <RegisterPage />
-         // </Container>
-      );
+      return <div></div>;
    }
 }
 
