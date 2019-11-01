@@ -1,1 +1,1 @@
-import "/imports/api/orders";
+import "../../api/orders";
