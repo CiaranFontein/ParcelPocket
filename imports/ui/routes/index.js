@@ -2,7 +2,13 @@ import React, { Fragment } from "react";
 import { Redirect, Route, Switch } from "react-router";
 import MenuBar from "../components/MenuBar";
 import PrivateRoute from "../components/PrivateRoute";
-import { Login, Recipients, YourOrders, OthersOrders, Profile } from "../pages";
+import {
+  AccountLogin,
+  Recipients,
+  YourOrders,
+  OthersOrders,
+  Profile
+} from "../pages";
 import { withTracker } from "meteor/react-meteor-data";
 
 const _Routes = ({ currentUserId }) => {
@@ -10,7 +16,7 @@ const _Routes = ({ currentUserId }) => {
     if (!currentUserId) {
       return (
         <Switch>
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={AccountLogin} />
           <Redirect from="*" to="/login" />
         </Switch>
       );

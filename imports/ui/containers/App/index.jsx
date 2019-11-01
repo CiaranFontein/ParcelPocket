@@ -16,7 +16,6 @@ class _App extends Component {
     return (
       <Router>
         <Routes />
-        <Recipients />
       </Router>
     );
   }
