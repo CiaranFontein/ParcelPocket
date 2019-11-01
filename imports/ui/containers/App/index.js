@@ -1,26 +1,29 @@
 import React, { Component } from "react";
-//import ToDoInput from "../../components/ToDoInput";
 import AccountsUIWrapper from "../../components/AccountsWrapper";
 import { withTracker } from "meteor/react-meteor-data";
-import RegisterPage from "../../pages/RegisterPage";
-// import Container from "@material-ui/core/Container";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "../../routes";
 
 class _App extends Component {
-   constructor() {
-      super();
+  constructor() {
+    super();
 
-      this.state = {};
-   }
+    this.state = {};
+  }
 
-   render() {
-      return <div></div>;
-   }
+  render() {
+    return (
+      <Router>
+        <Routes />
+      </Router>
+    );
+  }
 }
 
 export default App = withTracker(() => {
-   return {
-      // todos: ToDos.find({}).fetch(),
-      // currentUser: Meteor.user(),
-      // currentUserId: Meteor.userId()
-   };
+  return {
+    // todos: ToDos.find({}).fetch(),
+    currentUser: Meteor.user(),
+    currentUserId: Meteor.userId()
+  };
 })(_App);
