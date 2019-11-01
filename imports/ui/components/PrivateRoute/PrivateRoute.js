@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { ViewerContext } from "../../context/ViewerProvider";
 import { withTracker } from "meteor/react-meteor-data";
 
 const _PrivateRoute = ({
@@ -10,7 +9,6 @@ const _PrivateRoute = ({
   location,
   ...rest
 }) => {
-  console.log(currentUser);
   return (
     <Route
       render={props => {
