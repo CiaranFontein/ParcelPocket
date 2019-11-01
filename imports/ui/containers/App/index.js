@@ -6,26 +6,26 @@ import Routes from "../../routes";
 import Recipient from "../../pages/Recipients";
 
 class _App extends Component {
-  constructor() {
-    super();
+   constructor() {
+      super();
 
-    this.state = {};
-  }
+      this.state = {};
+   }
 
-  render() {
-    return (
-      <Router>
-        <Routes />
-        <Recipient />
-      </Router>
-    );
-  }
+   render() {
+      return (
+         <Router>
+            <Routes />
+            <Recipient />
+         </Router>
+      );
+   }
 }
 
 export default App = withTracker(() => {
-  return {
-    // todos: ToDos.find({}).fetch(),
-    currentUser: Meteor.user(),
-    currentUserId: Meteor.userId()
-  };
+   return {
+      // todos: ToDos.find({}).fetch(),
+      currentUser: Meteor.user(),
+      currentUserId: Meteor.userId()
+   };
 })(_App);
