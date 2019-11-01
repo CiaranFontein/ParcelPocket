@@ -3,6 +3,7 @@ import { Accounts } from "meteor/accounts-base";
 import { Orders } from "../../api/orders";
 
 Meteor.startup(() => {
+  console.log("HELLO");
   if (Meteor.users.find().count() === 0) {
     user1 = Accounts.createUser({
       email: "madisonhunter@email.com",
