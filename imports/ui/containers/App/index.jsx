@@ -2,6 +2,8 @@ import React, { Component } from "react";
 //import ToDoInput from "../../components/ToDoInput";
 import AccountsUIWrapper from "../../components/AccountsWrapper";
 import { withTracker } from "meteor/react-meteor-data";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "../../routes";
 
 class _App extends Component {
   constructor() {
@@ -12,9 +14,10 @@ class _App extends Component {
 
   render() {
     return (
-      <div className="login-wrapper">
-        <div>Holla</div>
-      </div>
+      <Router>
+        <Routes />
+        <Recipients />
+      </Router>
     );
   }
 }
