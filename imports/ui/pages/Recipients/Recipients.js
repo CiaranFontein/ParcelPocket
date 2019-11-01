@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import styles from "./styles";
+import RecipientMap from "../../components/RecipientMap";
 
 const Recipients = ({ classes }) => {
   return (
@@ -40,7 +41,7 @@ const Recipients = ({ classes }) => {
           </div>
         </div>
         <div className={classes.mapContainer}>
-          <img src="https://i.imgur.com/Zq2vr8R.png" />
+          <RecipientMap />
         </div>
         <div className={classes.recipientListContainer}>Recipient List</div>
       </div>

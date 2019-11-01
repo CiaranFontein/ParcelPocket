@@ -1,6 +1,5 @@
 import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
-import { Orders } from "../../api/orders";
 
 Meteor.startup(() => {
   console.log("HELLO");
@@ -13,7 +12,7 @@ Meteor.startup(() => {
         lastName: "Hunter",
         address: "1475 W Broadway, Vancouver, BC",
         reciever: false,
-        ownedOrders: [1, 2],
+        ownedOrders: [],
         otherOrders: []
       }
     });
@@ -26,7 +25,7 @@ Meteor.startup(() => {
         address: "1537 W Broadway, Vancouver, BC",
         reciever: true,
         ownedOrders: [],
-        otherOrders: [1, 2]
+        otherOrders: []
       }
     });
     user3 = Accounts.createUser({

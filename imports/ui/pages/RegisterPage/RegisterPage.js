@@ -51,25 +51,17 @@ const RegisterPage = ({ classes }) => {
                               className={classes.field}
                            />
                            <Field
-                              name="city"
+                              name="password1"
                               component="input"
-                              placeholder="City"
+                              placeholder="Password"
                               className={classes.field}
                            />
-                           <div className={classes.postalFlex}>
-                              <Field
-                                 name="postalCode"
-                                 component="input"
-                                 placeholder="Postal Code"
-                                 className={classes.postalCode}
-                              />
-                              <Field
-                                 name="province"
-                                 component="input"
-                                 placeholder="Province"
-                                 className={classes.postalProvince}
-                              />
-                           </div>
+                           <Field
+                              name="password2"
+                              component="input"
+                              placeholder="Repeat Password"
+                              className={classes.field}
+                           />
                         </div>
                      </div>
                      <h2 className={classes.receiver}>
