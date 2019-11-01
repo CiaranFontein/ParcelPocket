@@ -18,7 +18,7 @@ class LoginForm extends Component {
     Meteor.loginWithPassword(email, password, function(error) {
       if (Meteor.user()) {
         console.log(JSON.stringify(Meteor.user(), null, 2));
-        alert(`Hey, Your User ID is: ${Meteor.userId()}`);
+        // alert(`Hey, Your User ID is: ${Meteor.userId()}`);
       } else {
         alert(error.reason);
       }
