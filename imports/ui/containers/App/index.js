@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import AccountsUIWrapper from "../../components/AccountsWrapper";
 import { withTracker } from "meteor/react-meteor-data";
 import RegisterPage from "../../pages/RegisterPage";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "../../routes";
 // import Container from "@material-ui/core/Container";
 
 class _App extends Component {
@@ -13,7 +15,8 @@ class _App extends Component {
    }
 
    render() {
-      return <div></div>;
+      return;
+      <RegisterPage />;
    }
 }
 
