@@ -67,7 +67,7 @@ const RegisterPage = ({ classes }) => {
                                  name="province"
                                  component="input"
                                  placeholder="Province"
-                                 className={classes.postalCode}
+                                 className={classes.postalProvince}
                               />
                            </div>
                         </div>

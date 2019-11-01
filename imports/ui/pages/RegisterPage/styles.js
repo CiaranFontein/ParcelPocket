@@ -35,12 +35,22 @@ const styles = (theme) => ({
       width: "50%",
       fontSize: "0.4em",
       height: "3em",
-      paddingLeft: 10
+      paddingLeft: 10,
+      marginBottom: 10,
+      marginRight: 10
+   },
+   postalProvince: {
+      width: "50%",
+      fontSize: "0.4em",
+      height: "3em",
+      paddingLeft: 10,
+      marginBottom: 10
    },
    field: {
       fontSize: "0.4em",
       height: "3em",
-      paddingLeft: 10
+      paddingLeft: 10,
+      marginBottom: 10
    },
    buttonsYesNo: {
       display: "flex",
