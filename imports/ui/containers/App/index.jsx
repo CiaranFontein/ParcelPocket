@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Recipients } from "../../pages";
+//import ToDoInput from "../../components/ToDoInput";
 import AccountsUIWrapper from "../../components/AccountsWrapper";
 import { withTracker } from "meteor/react-meteor-data";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -24,7 +24,7 @@ class _App extends Component {
 export default App = withTracker(() => {
   return {
     // todos: ToDos.find({}).fetch(),
-    currentUser: Meteor.user(),
-    currentUserId: Meteor.userId()
+    // currentUser: Meteor.user(),
+    // currentUserId: Meteor.userId()
   };
 })(_App);
