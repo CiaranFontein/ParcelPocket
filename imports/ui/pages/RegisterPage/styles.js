@@ -55,7 +55,7 @@ const styles = (theme) => ({
    },
    buttonsYesNo: {
       display: "flex",
-      width: "35%",
+      width: "45%",
       justifyContent: "space-between",
       margin: 0,
       marginLeft: "auto",
@@ -67,21 +67,30 @@ const styles = (theme) => ({
       marginTop: "2em"
    },
    buttonsYes: {
-      width: "15em",
-      height: "7em",
+      width: "8em",
+      height: "3em",
       borderRadius: "7em",
       background: "#3051A1",
-      color: "white"
+      color: "white",
+      display: "flex",
+      alignItems: "center"
    },
    yes: {
-      fontSize: "3em"
+      fontSize: "2em"
    },
    buttonsNo: {
-      width: "15em",
-      height: "7em",
+      width: "8em",
+      height: "3em",
       borderRadius: "7em",
       background: "#2F9F80",
-      color: "white"
+      color: "white",
+      display: "flex",
+      alignItems: "center"
+   },
+   inputNo: {
+      width: "3em",
+      height: "4em",
+      marginLeft: 10
    },
    agreementConteiner: {
       marginTop: 30,

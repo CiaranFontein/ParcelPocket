@@ -2,7 +2,12 @@ import React, { Fragment } from "react";
 import { Redirect, Route, Switch } from "react-router";
 import MenuBar from "../components/MenuBar";
 import PrivateRoute from "../components/PrivateRoute";
-import { AccountLogin, RegisterPage, Recipients, YourOrders, OthersOrders, Profile } from "../pages";
+import AccountLogin from "../pages/AccountLogin";
+import RegisterPage from "../pages/RegisterPage";
+import Recipients from "../pages/Recipients";
+// import YourOrders from "../pages/";
+// import OthersOrders from "../pages";
+// import Profile from "../pages";
 import { withTracker } from "meteor/react-meteor-data";
 
 const _Routes = ({ currentUserId }) => {

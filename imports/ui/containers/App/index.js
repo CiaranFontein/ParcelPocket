@@ -15,8 +15,11 @@ class _App extends Component {
    }
 
    render() {
-      return;
-      <RegisterPage />;
+      return (
+         <BrowserRouter>
+            <Routes />
+         </BrowserRouter>
+      );
    }
 }
 
