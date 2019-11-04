@@ -3,7 +3,7 @@ import React from "react";
 
 const API_KEY = Meteor.settings.public.REACT_APP_GOOGLE_API_KEY;
 
-console.log(API_KEY);
+console.log(process.env);
 
 const RecipientMap = props => {
   return (
