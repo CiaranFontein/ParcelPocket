@@ -4,27 +4,29 @@ import { withTracker } from "meteor/react-meteor-data";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../routes";
 import Recipient from "../../pages/Recipients";
+import MenuBar from "../../components/MenuBar";
 
 class _App extends Component {
-   constructor() {
-      super();
+  constructor() {
+    super();
 
-      this.state = {};
-   }
+    this.state = {};
+  }
 
-   render() {
-      return (
-         <Router>
-            <Routes />
-         </Router>
-      );
-   }
+  render() {
+    return (
+      <Router>
+        <Recipient />
+        <Routes />
+      </Router>
+    );
+  }
 }
 
 export default App = withTracker(() => {
-   return {
-      // todos: ToDos.find({}).fetch(),
-      currentUser: Meteor.user(),
-      currentUserId: Meteor.userId()
-   };
+  return {
+    // todos: ToDos.find({}).fetch(),
+    currentUser: Meteor.user(),
+    currentUserId: Meteor.userId()
+  };
 })(_App);
