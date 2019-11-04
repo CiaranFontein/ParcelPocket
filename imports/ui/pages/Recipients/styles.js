@@ -37,10 +37,10 @@ const styles = theme => ({
     alignItems: "center"
   },
   mapContainer: {
-    display: "flex",
-    justifyContent: "center",
-    margin: theme.spacing(1),
-    alignItems: "center"
+    position: "relative",
+    width: "100%",
+    height: "100%",
+    margin: theme.spacing(1)
   },
   recipientListContainer: {
     display: "flex",
