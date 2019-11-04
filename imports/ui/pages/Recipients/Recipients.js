@@ -4,10 +4,12 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import styles from "./styles";
 import RecipientMap from "../../components/RecipientMap";
+import MenuBar from "../../components/MenuBar";
 
 const Recipients = ({ classes }) => {
   return (
     <div className={classes.recipientsPage}>
+      <MenuBar />
       <div className={classes.recipientsPageContainer}>
         Recipients
         <div className={classes.optionsPanel}>
