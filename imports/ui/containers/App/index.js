@@ -6,8 +6,12 @@ import AccountLogin from "../../pages/AccountLogin";
 // import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../routes";
+<<<<<<< HEAD
+import OthersOrdersListItem from "../../components/OthersOrdersListItem";
+=======
 import Recipient from "../../pages/Recipients";
 import MenuBar from "../../components/MenuBar";
+>>>>>>> 3e73ce27e93dc81533ecf2b2d7dde542f2315746
 
 class _App extends Component {
   constructor() {
@@ -16,6 +20,16 @@ class _App extends Component {
     this.state = {};
   }
 
+<<<<<<< HEAD
+   render() {
+      return (
+         <OthersOrdersListItem />
+         // {<Router>
+         //    <Routes />
+         // </Router>}
+      );
+   }
+=======
   render() {
     return (
       <Router>
@@ -27,6 +41,7 @@ class _App extends Component {
       </Router>
     );
   }
+>>>>>>> 3e73ce27e93dc81533ecf2b2d7dde542f2315746
 }
 
 export default App = withTracker(() => {
