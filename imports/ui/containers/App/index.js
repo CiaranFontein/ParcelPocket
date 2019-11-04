@@ -6,6 +6,7 @@ import AccountLogin from "../../pages/AccountLogin";
 // import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../routes";
+import YourOrdersListItem from "../../components/YourOrdersListItem";
 import OthersOrdersListItem from "../../components/OthersOrdersListItem";
 import Recipient from "../../pages/Recipients";
 import MenuBar from "../../components/MenuBar";
@@ -19,19 +20,13 @@ class _App extends Component {
 
    render() {
       return (
-         <OthersOrdersListItem />
+         <React.Fragment>
+            <YourOrdersListItem />
+            <OthersOrdersListItem />
+         </React.Fragment>
          // {<Router>
          //    <Routes />
          // </Router>}
-      );
-   }
-
-   render() {
-      return (
-         <Router>
-            <Recipient />
-            <Routes />
-         </Router>
       );
    }
 }
