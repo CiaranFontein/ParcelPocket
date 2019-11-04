@@ -1,5 +1,7 @@
 import { Mongo } from "meteor/mongo";
 
+export const Orders = new Mongo.Collection("orders");
+
 Meteor.methods({
   //Use this syntax to add order when we have a select recipient button
   //Meteor.call("orders.addOrder", 1, 2, 30);
@@ -18,4 +20,3 @@ Meteor.methods({
     });
   }
 });
-export const Orders = new Mongo.Collection("orders");
