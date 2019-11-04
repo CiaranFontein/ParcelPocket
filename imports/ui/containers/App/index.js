@@ -11,13 +11,12 @@ import Recipient from "../../pages/Recipients";
 import MenuBar from "../../components/MenuBar";
 
 class _App extends Component {
-  constructor() {
-    super();
+   constructor() {
+      super();
 
-    this.state = {};
-  }
+      this.state = {};
+   }
 
-<<<<<<< HEAD
    render() {
       return (
          <OthersOrdersListItem />
@@ -26,25 +25,21 @@ class _App extends Component {
          // </Router>}
       );
    }
-=======
-  render() {
-    return (
-      <Router>
-<<<<<<< HEAD
-=======
-        <Recipient />
->>>>>>> 84138577a932a7b55228feb9a1f712b559e0e021
-        <Routes />
-      </Router>
-    );
-  }
->>>>>>> 3e73ce27e93dc81533ecf2b2d7dde542f2315746
+
+   render() {
+      return (
+         <Router>
+            <Recipient />
+            <Routes />
+         </Router>
+      );
+   }
 }
 
 export default App = withTracker(() => {
-  return {
-    // todos: ToDos.find({}).fetch(),
-    currentUser: Meteor.user(),
-    currentUserId: Meteor.userId()
-  };
+   return {
+      // todos: ToDos.find({}).fetch(),
+      currentUser: Meteor.user(),
+      currentUserId: Meteor.userId()
+   };
 })(_App);
