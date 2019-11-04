@@ -16,6 +16,7 @@ const AccountLogin = ({ classes }) => {
         width={"300px"}
         className={classes.logo}
       ></img>
+
       <LoginForm />
     </div>
   );
