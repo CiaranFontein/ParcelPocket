@@ -1,12 +1,24 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Form, Field } from "react-final-form";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import {
+   Checkbox,
+   TextField,
+   Radio,
+   RadioGroup,
+   FormLabel,
+   FormControlLabel,
+   StyledRadio,
+   FormControl
+} from "@material-ui/core";
 import styles from "./styles";
 
+const addUser = (values) => {
+   console.log(values);
+   Meteor.call("users.addUser", values);
+};
+
 const RegisterPage = ({ classes }) => {
-   console.log(classes);
    return (
       <div className={classes.registerContainer}>
          <img
@@ -17,7 +29,7 @@ const RegisterPage = ({ classes }) => {
          <div className={classes.registerFormContainer}>
             <h1>Register</h1>
             <Form
-               onSubmit={true}
+               onSubmit={addUser}
                // validate={true}
                render={({ handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
@@ -25,42 +37,91 @@ const RegisterPage = ({ classes }) => {
                         <div className={classes.needFlex}>
                            <Field
                               name="firstName"
-                              component="input"
-                              placeholder="First Name"
-                              placeholderTextColor={"#BFBFBF"}
-                              className={classes.field}
+                              render={({ input, meta }) => (
+                                 <TextField
+                                    id="standard-with-placeholder"
+                                    label="First Name"
+                                    placeholder="First Name"
+                                    className={classes.field}
+                                    margin="normal"
+                                    {...input}
+                                    value={input.value}
+                                 />
+                              )}
                            />
                            <Field
                               name="lastName"
-                              component="input"
-                              placeholder="Last Name"
-                              className={classes.field}
+                              render={({ input, meta }) => (
+                                 <TextField
+                                    id="standard-with-placeholder"
+                                    label="Last Name"
+                                    placeholder="Last Name"
+                                    className={classes.field}
+                                    margin="normal"
+                                    {...input}
+                                    value={input.value}
+                                 />
+                              )}
                            />
                            <Field
                               name="email"
-                              component="input"
-                              placeholder="E-mail"
-                              className={classes.field}
+                              render={({ input, meta }) => (
+                                 <TextField
+                                    id="standard-with-placeholder"
+                                    label="E-mail"
+                                    placeholder="E-mail"
+                                    className={classes.field}
+                                    margin="normal"
+                                    {...input}
+                                    value={input.value}
+                                 />
+                              )}
                            />
                         </div>
                         <div className={classes.needFlex}>
                            <Field
                               name="address"
-                              component="input"
-                              placeholder="Address"
-                              className={classes.field}
+                              render={({ input, meta }) => (
+                                 <TextField
+                                    id="standard-with-placeholder"
+                                    label="Address"
+                                    placeholder="Address"
+                                    className={classes.field}
+                                    margin="normal"
+                                    {...input}
+                                    value={input.value}
+                                 />
+                              )}
                            />
                            <Field
                               name="password1"
-                              component="input"
-                              placeholder="Password"
-                              className={classes.field}
+                              render={({ input, meta }) => (
+                                 <TextField
+                                    id="standard-with-placeholder"
+                                    label="Password"
+                                    placeholder="Password"
+                                    className={classes.field}
+                                    margin="normal"
+                                    {...input}
+                                    value={input.value}
+                                    type="password"
+                                 />
+                              )}
                            />
                            <Field
-                              name="password2"
-                              component="input"
-                              placeholder="Repeat Password"
-                              className={classes.field}
+                              name="password"
+                              render={({ input, meta }) => (
+                                 <TextField
+                                    id="standard-with-placeholder"
+                                    label="Repeat Password"
+                                    placeholder="Repeat Password"
+                                    className={classes.field}
+                                    margin="normal"
+                                    {...input}
+                                    value={input.value}
+                                    type="password"
+                                 />
+                              )}
                            />
                         </div>
                      </div>
@@ -68,12 +129,26 @@ const RegisterPage = ({ classes }) => {
                         Would You Like to be a Receiver?
                      </h2>
                      <div className={classes.buttonsYesNo}>
-                        <button className={classes.buttonsYes} type="submit">
+                        <label className={classes.buttonsYes}>
+                           <Field
+                              name="receiver"
+                              component="input"
+                              type="radio"
+                              value="true"
+                              className={classes.inputNo}
+                           />{" "}
                            <span className={classes.yes}>Yes</span>
-                        </button>
-                        <button className={classes.buttonsNo} type="submit">
+                        </label>
+                        <label className={classes.buttonsNo}>
+                           <Field
+                              name="receiver"
+                              component="input"
+                              type="radio"
+                              value="false"
+                              className={classes.inputNo}
+                           />{" "}
                            <span className={classes.yes}>No</span>
-                        </button>
+                        </label>
                      </div>
                      <div className={classes.agreementConteiner}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -95,17 +170,16 @@ const RegisterPage = ({ classes }) => {
                         deserunt mollit anim id est laborum.
                      </div>
                      <div className={classes.checkbox}>
-                        <FormControlLabel
-                           control={
-                              <Checkbox
-                                 checked={""}
-                                 onChange={() => ""}
-                                 value=""
-                                 color="primary"
-                              />
-                           }
-                           label="Agree"
-                        />
+                        <label>
+                           <Field
+                              name="agree"
+                              component="input"
+                              type="checkbox"
+                              value="true"
+                              placeholder="test"
+                           />
+                           I agree
+                        </label>
                      </div>
                      <div className={classes.submitButton}>
                         <button className={classes.buttonSubmit} type="submit">

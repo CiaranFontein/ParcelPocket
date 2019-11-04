@@ -7,6 +7,7 @@ import AccountLogin from "../../pages/AccountLogin";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../routes";
 import Recipient from "../../pages/Recipients";
+import MenuBar from "../../components/MenuBar";
 
 class _App extends Component {
   constructor() {
@@ -18,6 +19,10 @@ class _App extends Component {
   render() {
     return (
       <Router>
+<<<<<<< HEAD
+=======
+        <Recipient />
+>>>>>>> 84138577a932a7b55228feb9a1f712b559e0e021
         <Routes />
       </Router>
     );
