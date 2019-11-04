@@ -29,8 +29,8 @@ const _Routes = ({ currentUserId }) => {
         <PrivateRoute exact path="/recipients" component={Recipients} />
         <PrivateRoute exact path="/yourorders" component={YourOrders} />
         <PrivateRoute exact path="/othersorders" component={OthersOrders} />
-        <PrivateRoute exact path="/profile/:id" component={Profile} />
-        <PrivateRoute exact path="/profile" component={Profile} />
+        <PrivateRoute path="/profile/:id" component={Profile} />
+        <PrivateRoute path="/profile" component={Profile} />
         <Redirect from="*" to="/yourorders" />
       </Switch>
     </Fragment>

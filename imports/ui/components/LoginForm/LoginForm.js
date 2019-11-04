@@ -3,12 +3,16 @@ import ReactDOM from "react-dom";
 import { Form, Field } from "react-final-form";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import styles from "./styles";
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   signIn = event => {
     let email = event.target.loginEmail.value;
     let password = event.target.loginPassword.value;
@@ -26,6 +30,8 @@ class LoginForm extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
       <div>
         <Form
@@ -36,7 +42,7 @@ class LoginForm extends Component {
                 event.preventDefault();
                 this.signIn(event);
               }}
-              //className={classes.form}
+              className={classes.form}
             >
               <div>
                 <Field
@@ -48,7 +54,7 @@ class LoginForm extends Component {
                         placeholder="Your Email"
                         value={input.value}
                         id="login-email"
-                        // className={classes.field}
+                        className={classes.field}
                       />
                     </div>
                   )}
@@ -60,7 +66,7 @@ class LoginForm extends Component {
                       <input
                         {...input}
                         placeholder="Password"
-                        // className={classes.field}
+                        className={classes.field}
                         type="password"
                         value={input.value}
                         id="login-password"
@@ -69,24 +75,19 @@ class LoginForm extends Component {
                   )}
                 />
               </div>
-              <div
-              //   className={classes.buttons}
-              >
+              <div className={classes.buttons}>
                 <Button
                   variant="contained"
                   id="login-button"
                   type="submit"
                   value="sign in"
-                  //   className={classes.login}
+                  className={classes.login}
                 >
                   Login
                 </Button>
 
-                <Link to="/register">
-                  <Button
-                    variant="contained"
-                    //   className={classes.signup}
-                  >
+                <Link to="/register" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" className={classes.signup}>
                     Signup
                   </Button>
                 </Link>
