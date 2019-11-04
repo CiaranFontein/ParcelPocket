@@ -3,7 +3,7 @@ import AccountsUIWrapper from "../../components/AccountsWrapper";
 import { withTracker } from "meteor/react-meteor-data";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../routes";
-import Recipient from "../../pages/Recipients";
+import OthersOrdersListItem from "../../components/OthersOrdersListItem";
 
 class _App extends Component {
    constructor() {
@@ -14,9 +14,10 @@ class _App extends Component {
 
    render() {
       return (
-         <Router>
-            <Routes />
-         </Router>
+         <OthersOrdersListItem />
+         // {<Router>
+         //    <Routes />
+         // </Router>}
       );
    }
 }
