@@ -12,12 +12,6 @@ import Recipient from "../../pages/Recipients";
 import MenuBar from "../../components/MenuBar";
 
 class _App extends Component {
-   constructor() {
-      super();
-
-      this.state = {};
-   }
-
    render() {
       return (
          <Router>
@@ -29,7 +23,6 @@ class _App extends Component {
 
 export default App = withTracker(() => {
    return {
-      // todos: ToDos.find({}).fetch(),
       currentUser: Meteor.user(),
       currentUserId: Meteor.userId()
    };

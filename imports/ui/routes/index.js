@@ -7,6 +7,8 @@ import RegisterPage from "../pages/RegisterPage";
 import Recipients from "../pages/Recipients";
 import YourOrders from "../pages/YourOrders";
 import OthersOrders from "../pages/OthersOrders";
+import OthersOrdersListItem from "../components/OthersOrdersListItem";
+import YourOrdersListItem from "../components/YourOrdersListItem";
 import Profile from "../pages/Profile";
 import { withTracker } from "meteor/react-meteor-data";
 
@@ -31,6 +33,16 @@ const _Routes = ({ currentUserId }) => {
             <PrivateRoute exact path="/othersorders" component={OthersOrders} />
             <PrivateRoute exact path="/profile/:id" component={Profile} />
             <PrivateRoute exact path="/profile" component={Profile} />
+            <PrivateRoute
+               exact
+               path="/otherordertest"
+               component={OthersOrdersListItem}
+            />
+            <PrivateRoute
+               exact
+               path="/yourordertest"
+               component={YourOrdersListItem}
+            />
             <Redirect from="*" to="/yourorders" />
          </Switch>
       </Fragment>
