@@ -12,7 +12,7 @@ const _PrivateRoute = ({
   return (
     <Route
       render={props => {
-        if (viewer) {
+        if (props) {
           return <Component {...props} />;
         }
         return <Redirect to={{ pathname: "/", state: { from: location } }} />;
