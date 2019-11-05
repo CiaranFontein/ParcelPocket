@@ -59,24 +59,32 @@ const Header = ({ classes }) => {
             />
           </IconButton>
         </Link>
+
         <Link to="./recipients">
           <Button className={classes.iconButton}>
             <AddCircle />
             Recipients
           </Button>
         </Link>
+
         <Link to="./yourorders">
           <Button className={classes.iconButton}>
             <AddCircle />
             Your Orders
           </Button>
         </Link>
+
         <Link to="./othersorders">
           <Button className={classes.iconButton}>
             <AddCircle />
             Others' Orders
           </Button>
         </Link>
+
+        <Link to="./login">
+          <Button onClick={() => Meteor.logout()}>Sign Out</Button>
+        </Link>
+
         <IconButton
           onClick={handleClick}
           edge="start"
