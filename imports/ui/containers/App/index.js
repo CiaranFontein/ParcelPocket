@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import AccountsUIWrapper from "../../components/AccountsWrapper";
 import { withTracker } from "meteor/react-meteor-data";
-import RegisterPage from "../../pages/RegisterPage";
-import AccountLogin from "../../pages/AccountLogin";
-// import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../routes";
-import Recipient from "../../pages/Recipients";
-import MenuBar from "../../components/MenuBar";
 
 class _App extends Component {
+<<<<<<< HEAD
   constructor() {
     super();
 
@@ -23,12 +18,20 @@ class _App extends Component {
       </Router>
     );
   }
+=======
+   render() {
+      return (
+         <Router>
+            <Routes />
+         </Router>
+      );
+   }
+>>>>>>> 294bd5060d2bec6e8e14dfc83fd77400a65537de
 }
 
 export default App = withTracker(() => {
-  return {
-    // todos: ToDos.find({}).fetch(),
-    currentUser: Meteor.user(),
-    currentUserId: Meteor.userId()
-  };
+   return {
+      currentUser: Meteor.user(),
+      currentUserId: Meteor.userId()
+   };
 })(_App);

@@ -7,7 +7,6 @@ const styles = theme => ({
   },
   recipientsPageContainer: {
     width: "70vw",
-    height: "90vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -37,10 +36,10 @@ const styles = theme => ({
     margin: theme.spacing(1),
     alignItems: "center"
   },
-  mapContainer: {
+  recipientMapContainer: {
     position: "relative",
     width: "100%",
-    height: "100%",
+    height: 400,
     margin: theme.spacing(1)
   },
   recipientListContainer: {
@@ -48,7 +47,8 @@ const styles = theme => ({
     flexDirection: "column",
     justifyContent: "center",
     margin: theme.spacing(2),
-    alignItems: "center"
+    alignItems: "center",
+    width: "100%"
   }
 });
 export default styles;
