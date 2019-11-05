@@ -1,5 +1,8 @@
 import React from "react";
+import { Meteor } from "meteor/meteor";
+import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
+import { flexbox } from "@material-ui/system";
 import styles from "./styles";
 import {
   withStyles,
@@ -35,49 +38,39 @@ const Header = ({ classes }) => {
       path: "/profile",
       name: "Profile",
       icon: <Fingerprint fontSize="default" />
-    },
-    {
-      path: "/login",
-      name: "Sign Out",
-      icon: <PowerSettingsNew fontSize="default" />
     }
+    // {
+    //   path: "/login",
+    //   name: "Sign Out",
+    //   icon: <PowerSettingsNew fontSize="default" />
+    // }
   ];
   return (
-    <AppBar className={classes.appBar} position="static">
+    <AppBar className={classes.appBar} position="static" color="default">
       <Toolbar className={classes.flexToolbar}>
-        <Link to="./recipients">
-          <IconButton
-            className={classes.iconButton}
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-          >
-            <img
-              src="http://localhost:3000/images/white.png"
-              alt="logo"
-              width="40px"
-            />
-          </IconButton>
+        <Link to="/recipients">
+          <img
+            src="http://localhost:3000/images/white_small_transparent.png"
+            alt="logo"
+            width="100px"
+          />
         </Link>
-        <Link to="./recipients">
-          <Button className={classes.iconButton}>
-            <AddCircle />
-            Recipients
-          </Button>
-        </Link>
-        <Link to="./yourorders">
-          <Button className={classes.iconButton}>
-            <AddCircle />
-            Your Orders
-          </Button>
-        </Link>
-        <Link to="./othersorders">
-          <Button className={classes.iconButton}>
-            <AddCircle />
-            Others' Orders
-          </Button>
-        </Link>
-        <IconButton
+
+        <div className={classes.mainlinks}>
+          <Link to="/recipients" style={{ textDecoration: "none" }}>
+            <Button className={classes.iconButton}>Create Order</Button>
+          </Link>
+
+          <Link to="/yourorders" style={{ textDecoration: "none" }}>
+            <Button className={classes.iconButton}>Orders</Button>
+          </Link>
+
+          <Link to="/othersorders" style={{ textDecoration: "none" }}>
+            <Button className={classes.iconButton}>Parcels</Button>
+          </Link>
+        </div>
+
+        {/* <IconButton
           onClick={handleClick}
           edge="start"
           color="inherit"
@@ -101,7 +94,41 @@ const Header = ({ classes }) => {
               </MenuItem>
             </Link>
           ))}
-        </Menu>
+        </Menu> */}
+
+        <div className={classes.profiledetails}>
+          <div className={classes.gravatarcontainer}>
+            <Gravatar
+              className={classes.gravatarimage}
+              email="ciaran.fountain@gmail.com"
+            />
+          </div>
+          <div className={classes.profilenamerating}>
+            <p className={classes.profilename}>Joey Kramer</p>
+            <p className={classes.profilerating}>Rating: 9000</p>
+          </div>
+          <div className={classes.navlinks}>
+            <Link to="/profile" style={{ textDecoration: "none" }}>
+              <Button className={classes.navlinksbutton} variant="contained">
+                Profile
+              </Button>
+            </Link>
+
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              <Button
+                className={classes.navlinksbutton}
+                onClick={() =>
+                  Meteor.logout(error => {
+                    console.log(error);
+                  })
+                }
+                variant="contained"
+              >
+                Sign Out
+              </Button>
+            </Link>
+          </div>
+        </div>
       </Toolbar>
     </AppBar>
   );

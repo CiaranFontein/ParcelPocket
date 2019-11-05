@@ -4,18 +4,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../routes";
 
 class _App extends Component {
-   render() {
-      return (
-         <Router>
-            <Routes />
-         </Router>
-      );
-   }
+  render() {
+    return (
+      <Router>
+        <Routes />
+      </Router>
+    );
+  }
 }
 
 export default App = withTracker(() => {
-   return {
-      currentUser: Meteor.user(),
-      currentUserId: Meteor.userId()
-   };
+  return {
+    currentUser: Meteor.user(),
+    currentUserId: Meteor.userId()
+  };
 })(_App);

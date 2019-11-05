@@ -1,9 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { withTracker } from "meteor/react-meteor-data";
 
-const _PrivateRoute = ({
-  currentUser,
+const PrivateRoute = ({
   currentUserId,
   component: Component,
   location,
@@ -15,16 +13,13 @@ const _PrivateRoute = ({
         if (currentUserId) {
           return <Component {...props} />;
         }
-        return <Redirect to={{ pathname: "/", state: { from: location } }} />;
+        return (
+          <Redirect to={{ pathname: "/login", state: { from: location } }} />
+        );
       }}
       {...rest}
     />
   );
 };
 
-export default PrivateRoute = withTracker(() => {
-  return {
-    currentUser: Meteor.user(),
-    currentUserId: Meteor.userId()
-  };
-})(_PrivateRoute);
+export default PrivateRoute;
