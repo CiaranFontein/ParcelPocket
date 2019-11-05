@@ -29,16 +29,16 @@ class RecipientMap extends Component {
   // }
 
   componentDidMount() {
-    this.props.currentUser && this.getPlaces();
+    this.getPlaces();
   }
 
   getPlaces = async () => {
-    console.log("sfbgkjsn");
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = `https://maps.googleapis.com/maps/api/place/textsearch/
     json?query=${this.props.currentUser.profile.address}&key=${API_KEY}`;
 
     try {
+      console.log("getting places");
       const response = await fetch(proxyurl + url, {
         headers: {
           "Access-Control-Allow-Origin": "*"
@@ -51,9 +51,7 @@ class RecipientMap extends Component {
   };
 
   render() {
-    // console.log(this.props.users);
     console.log(this.state);
-    //console.log(this.props.currentUser.profile.address);
     const directionsService = new google.maps.DirectionsService();
 
     const origin = { lat: 40.756795, lng: -73.954298 };
