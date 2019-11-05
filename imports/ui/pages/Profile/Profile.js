@@ -1,4 +1,5 @@
 import React from "react";
+import { Meteor } from "meteor/meteor";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import { Form, Field } from "react-final-form";
@@ -15,8 +16,7 @@ const updateProfile = values => {
 
 const Profile = props => {
   console.log(props);
-  const user = props.currentUser;
-  const { classes } = props;
+  const { currentUser, classes } = props;
   return (
     <div className={classes.registerContainer}>
       <img
@@ -28,11 +28,11 @@ const Profile = props => {
         <h1>Update Profile</h1>
         <Form
           initialValues={{
-            firstName: user.profile.firstName,
-            lastName: user.profile.lastName,
-            email: user.emails[0].address,
-            address: user.profile.address,
-            receiver: user.profile.receiver
+            firstName: currentUser.profile.firstName,
+            lastName: currentUser.profile.lastName,
+            email: currentUser.emails[0].address,
+            address: currentUser.profile.address,
+            receiver: currentUser.profile.receiver
           }}
           onSubmit={values => updateProfile(values)}
           // validate={true}
@@ -44,7 +44,6 @@ const Profile = props => {
                     name="firstName"
                     render={({ input, meta }) => (
                       <TextField
-                        id="standard-with-placeholder"
                         label="First Name"
                         className={classes.field}
                         margin="normal"
@@ -57,7 +56,6 @@ const Profile = props => {
                     name="lastName"
                     render={({ input, meta }) => (
                       <TextField
-                        id="standard-with-placeholder"
                         label="Last Name"
                         className={classes.field}
                         margin="normal"
@@ -70,7 +68,6 @@ const Profile = props => {
                     name="email"
                     render={({ input, meta }) => (
                       <TextField
-                        id="standard-with-placeholder"
                         label="E-mail"
                         className={classes.field}
                         margin="normal"
@@ -85,7 +82,6 @@ const Profile = props => {
                     name="address"
                     render={({ input, meta }) => (
                       <TextField
-                        id="standard-with-placeholder"
                         label="Address"
                         className={classes.field}
                         margin="normal"
@@ -98,7 +94,6 @@ const Profile = props => {
                     name="password1"
                     render={({ input, meta }) => (
                       <TextField
-                        id="standard-with-placeholder"
                         label="Password"
                         className={classes.field}
                         margin="normal"
@@ -112,7 +107,6 @@ const Profile = props => {
                     name="password"
                     render={({ input, meta }) => (
                       <TextField
-                        id="standard-with-placeholder"
                         label="Repeat Password"
                         className={classes.field}
                         margin="normal"
@@ -164,9 +158,9 @@ const Profile = props => {
   );
 };
 
-export default withTracker(props => {
-  Meteor.subscribe("users");
+export default withTracker(() => {
+  console.log(Meteor.userId());
   return {
-    currentUser: Meteor.user()
+    currentUser: Meteor.users.findOne({ _id: Meteor.userId() })
   };
 })(withStyles(styles)(Profile));
