@@ -2,10 +2,9 @@ import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
 
 Meteor.startup(() => {
-  console.log("HELLO");
   if (Meteor.users.find().count() === 0) {
     user1 = Accounts.createUser({
-      email: "madisonhunter@email.com",
+      email: "madisonhunter834@gmail.com",
       password: "password",
       profile: {
         firstName: "Madison",
@@ -13,11 +12,12 @@ Meteor.startup(() => {
         address: "1475 W Broadway, Vancouver, BC",
         reciever: false,
         ownedOrders: [],
-        otherOrders: []
+        otherOrders: [],
+        score: 0
       }
     });
     user2 = Accounts.createUser({
-      email: "joeykramer@email.com",
+      email: "joeykramer834@gmail.com",
       password: "password",
       profile: {
         firstName: "Joey",
@@ -25,7 +25,8 @@ Meteor.startup(() => {
         address: "1537 W Broadway, Vancouver, BC",
         reciever: true,
         ownedOrders: [],
-        otherOrders: []
+        otherOrders: [],
+        score: 419
       }
     });
     user3 = Accounts.createUser({
@@ -37,7 +38,8 @@ Meteor.startup(() => {
         address: "1410 W Broadway, Vancouver, BC",
         reciever: true,
         ownedOrders: [],
-        otherOrders: []
+        otherOrders: [],
+        score: 432
       }
     });
     user4 = Accounts.createUser({
@@ -49,7 +51,8 @@ Meteor.startup(() => {
         address: "1643 W Broadway, Vancouver, BC",
         reciever: false,
         ownedOrders: [],
-        otherOrders: []
+        otherOrders: [],
+        score: 734754
       }
     });
     user5 = Accounts.createUser({
@@ -61,7 +64,8 @@ Meteor.startup(() => {
         address: "532 W Broadway #110, Vancouver, BC",
         reciever: true,
         ownedOrders: [],
-        otherOrders: []
+        otherOrders: [],
+        score: 0
       }
     });
     user6 = Accounts.createUser({
@@ -73,7 +77,8 @@ Meteor.startup(() => {
         address: "3832 Oak St, Vancouver, BC",
         reciever: true,
         ownedOrders: [],
-        otherOrders: []
+        otherOrders: [],
+        score: 476
       }
     });
     user7 = Accounts.createUser({
@@ -85,7 +90,8 @@ Meteor.startup(() => {
         address: "2135 W 4th Ave, Vancouver, BC",
         reciever: true,
         ownedOrders: [],
-        otherOrders: []
+        otherOrders: [],
+        score: 21
       }
     });
     user8 = Accounts.createUser({
@@ -97,7 +103,8 @@ Meteor.startup(() => {
         address: "1018 Beach Ave, Vancouver, BC",
         reciever: true,
         ownedOrders: [],
-        otherOrders: []
+        otherOrders: [],
+        score: 125
       }
     });
   }
