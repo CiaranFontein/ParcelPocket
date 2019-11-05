@@ -49,18 +49,11 @@ const Header = ({ classes }) => {
     <AppBar className={classes.appBar} position="static" color="default">
       <Toolbar className={classes.flexToolbar}>
         <Link to="/recipients">
-          <IconButton
-            className={classes.iconButton}
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-          >
-            <img
-              src="http://localhost:3000/images/white_small_transparent.png"
-              alt="logo"
-              width="70px"
-            />
-          </IconButton>
+          <img
+            src="http://localhost:3000/images/white_small_transparent.png"
+            alt="logo"
+            width="100px"
+          />
         </Link>
 
         <div className={classes.mainlinks}>

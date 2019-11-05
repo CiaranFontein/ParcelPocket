@@ -60,6 +60,9 @@ const styles = theme => ({
     fontSize: "20px",
     textTransform: "capitalize",
     margin: "20px"
+  },
+  logoimg: {
+    padding: "20px"
   }
 });
 
