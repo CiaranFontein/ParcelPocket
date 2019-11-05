@@ -19,11 +19,6 @@ const Profile = props => {
   const { currentUser, classes } = props;
   return (
     <div className={classes.registerContainer}>
-      <img
-        className={classes.logo}
-        src="/images/white_small.png"
-        alt="pp logo"
-      />
       <div className={classes.registerFormContainer}>
         <h1>Update Profile</h1>
         <Form
