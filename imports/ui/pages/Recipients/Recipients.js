@@ -7,7 +7,14 @@ import RecipientMap from "../../components/RecipientMap";
 import Recipient from "../../components/Recipient";
 import { withTracker } from "meteor/react-meteor-data";
 
-const Recipients = ({ classes, users, viewer }) => {
+const Recipients = ({ classes, users }) => {
+  const [transitValue, setTransitValue] = React.useState(10);
+  const [distanceValue, setDistanceValue] = React.useState(10);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div className={classes.recipientsPage}>
       <div className={classes.recipientsPageContainer}>
@@ -18,13 +25,14 @@ const Recipients = ({ classes, users, viewer }) => {
               Max Transit Time (days)
             </Typography>
             <Slider
+              value={transitValue}
               defaultValue={14}
               aria-labelledby="Max Transit Time (days)"
               valueLabelDisplay="auto"
               step={1}
-              marks
               min={0}
               max={100}
+              onChange={(event, value) => setTransitValue(value)}
             />
           </div>
           <div className={classes.maxRange}>
@@ -32,13 +40,14 @@ const Recipients = ({ classes, users, viewer }) => {
               Max Range (km)
             </Typography>
             <Slider
+              value={distanceValue}
               defaultValue={10}
               aria-labelledby="Max Range (km)"
               valueLabelDisplay="auto"
-              step={5}
-              marks
+              step={1}
               min={0}
               max={50}
+              onChange={(event, value) => setDistanceValue(value)}
             />
           </div>
         </div>
@@ -47,7 +56,7 @@ const Recipients = ({ classes, users, viewer }) => {
         </div>
         <div className={classes.recipientListContainer}>
           {users.map((user, index) => (
-            <Recipient key={index} user={user} />
+            <Recipient key={index} user={user} transitValue={transitValue} />
           ))}
         </div>
       </div>
