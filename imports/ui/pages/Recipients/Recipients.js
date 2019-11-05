@@ -52,7 +52,7 @@ const Recipients = ({ classes, users }) => {
           </div>
         </div>
         <div className={classes.recipientMapContainer}>
-          <RecipientMap />
+          <RecipientMap currentUser={Meteor.user()} users={users} />
         </div>
         <div className={classes.recipientListContainer}>
           {users.map((user, index) => (
