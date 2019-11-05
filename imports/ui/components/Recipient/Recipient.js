@@ -11,7 +11,7 @@ const Recipient = ({ classes, user, currentUserId, transitValue }) => {
   return (
     <div className={classes.recipientContainer}>
       <div className={classes.recipientAvatar}>
-        <Gravatar email={user.email} />
+        {/* <Gravatar email={user.email} /> */}
       </div>
       <div className={classes.recipientName}>
         {user.profile.firstName} {user.profile.lastName}
