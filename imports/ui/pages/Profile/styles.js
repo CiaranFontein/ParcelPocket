@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { height } from "@material-ui/system";
 
 const styles = theme => ({
@@ -132,7 +131,4 @@ const styles = theme => ({
   }
 });
 
-=======
-const styles = theme => ({});
->>>>>>> 294bd5060d2bec6e8e14dfc83fd77400a65537de
 export default styles;

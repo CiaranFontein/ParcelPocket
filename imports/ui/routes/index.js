@@ -13,7 +13,6 @@ import Profile from "../pages/Profile";
 import { withTracker } from "meteor/react-meteor-data";
 
 const _Routes = ({ currentUserId }) => {
-<<<<<<< HEAD
   {
     if (!currentUserId) {
       return (
@@ -38,32 +37,6 @@ const _Routes = ({ currentUserId }) => {
       </Switch>
     </Fragment>
   );
-=======
-   {
-      if (!currentUserId) {
-         return (
-            <Switch>
-               <Route path="/login" component={AccountLogin} />
-               <Route path="/register" component={RegisterPage} />
-               <Redirect from="*" to="/login" />
-            </Switch>
-         );
-      }
-   }
-   return (
-      <Fragment>
-         <MenuBar />
-         <Switch>
-            <PrivateRoute exact path="/recipients" component={Recipients} />
-            <PrivateRoute exact path="/yourorders" component={YourOrders} />
-            <PrivateRoute exact path="/othersorders" component={OthersOrders} />
-            <PrivateRoute path="/profile/:id" component={Profile} />
-            <PrivateRoute path="/profile" component={Profile} />
-            <Redirect from="*" to="/yourorders" />
-         </Switch>
-      </Fragment>
-   );
->>>>>>> 294bd5060d2bec6e8e14dfc83fd77400a65537de
 };
 
 export default Routes = withTracker(() => {
