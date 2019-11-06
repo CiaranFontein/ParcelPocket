@@ -52,13 +52,9 @@ const Recipients = ({ classes, users, currentUser }) => {
           </div>
         </div>
         <div className={classes.recipientMapContainer}>
-          {currentUser &&
-            (currentUser.profile.location && (
-              <RecipientMap
-                location={currentUser.profile.location}
-                recipients={users}
-              />
-            ))}
+          {currentUser && (
+            <RecipientMap user={currentUser} recipients={users} />
+          )}
         </div>
         <div className={classes.recipientListContainer}>
           {users.map((recipient, index) => (

@@ -14,7 +14,12 @@ Meteor.startup(() => {
         reciever: false,
         ownedOrders: [],
         otherOrders: [],
-        score: 0
+        score: 0,
+        location: {
+          lat: 49.2634483,
+          lng: -123.1381682
+        },
+        placeId: "ChIJV8QansdzhlQRatww-ihk6jo"
       }
     });
     user2 = Accounts.createUser({
@@ -27,7 +32,12 @@ Meteor.startup(() => {
         reciever: true,
         ownedOrders: [],
         otherOrders: [],
-        score: 419
+        score: 419,
+        location: {
+          lat: 49.26296319999999,
+          lng: -123.1383187
+        },
+        placeId: "ChIJecsOesdzhlQREFckW4a4A4g"
       }
     });
     user3 = Accounts.createUser({
@@ -40,7 +50,12 @@ Meteor.startup(() => {
         reciever: true,
         ownedOrders: [],
         otherOrders: [],
-        score: 432
+        score: 432,
+        location: {
+          lat: 49.2632526,
+          lng: -123.1387273
+        },
+        placeId: "ChIJe8ouDsdzhlQRGPlBKCRt2W0"
       }
     });
     user4 = Accounts.createUser({
@@ -50,10 +65,15 @@ Meteor.startup(() => {
         firstName: "Jimmy",
         lastName: "Crespo",
         address: "1643 W Broadway, Vancouver, BC",
-        reciever: false,
+        reciever: true,
         ownedOrders: [],
         otherOrders: [],
-        score: 734754
+        score: 734754,
+        location: {
+          lat: 49.2639002,
+          lng: -123.1442899
+        },
+        placeId: "ChIJrTLr-GyuEmsRBfy61i59si0"
       }
     });
     user5 = Accounts.createUser({
@@ -66,7 +86,12 @@ Meteor.startup(() => {
         reciever: true,
         ownedOrders: [],
         otherOrders: [],
-        score: 0
+        score: 0,
+        location: {
+          lat: 49.2630976,
+          lng: -123.1183367
+        },
+        placeId: "ChIJZx_Rbt1zhlQR8mA7YsSr8nQ"
       }
     });
     user6 = Accounts.createUser({
@@ -79,7 +104,12 @@ Meteor.startup(() => {
         reciever: true,
         ownedOrders: [],
         otherOrders: [],
-        score: 476
+        score: 476,
+        location: {
+          lat: 49.2514875,
+          lng: -123.12947
+        },
+        placeId: "ChIJTaOma5NzhlQRW5nFLa_Q4ck"
       }
     });
     user7 = Accounts.createUser({
@@ -92,7 +122,12 @@ Meteor.startup(() => {
         reciever: true,
         ownedOrders: [],
         otherOrders: [],
-        score: 21
+        score: 21,
+        location: {
+          lat: 49.2682739,
+          lng: -123.155877
+        },
+        placeId: "ChIJ25t0P7RzhlQRTwPhlCEkujo"
       }
     });
     user8 = Accounts.createUser({
@@ -105,20 +140,30 @@ Meteor.startup(() => {
         reciever: true,
         ownedOrders: [],
         otherOrders: [],
-        score: 125
+        score: 125,
+        location: {
+          lat: 49.2761147,
+          lng: -123.1364298
+        },
+        placeId: "ChIJE-dFY9JzhlQRSVRu5AZjpb8"
       }
     });
     user9 = Accounts.createUser({
       email: "a@a.com",
       password: "a",
       profile: {
-        firstName: "Brad",
-        lastName: "Whitford",
+        firstName: "A",
+        lastName: "Aron",
         address: "2135 W 4th Ave, Vancouver, BC",
         reciever: true,
         ownedOrders: [],
         otherOrders: [],
-        score: 21
+        score: 21,
+        location: {
+          lat: 49.262,
+          lng: -123.1383
+        },
+        placeId: "ChIJecsOesdzhlQREFckW4a4A4g"
       }
     });
   }
