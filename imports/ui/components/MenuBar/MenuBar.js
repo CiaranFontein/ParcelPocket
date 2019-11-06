@@ -3,6 +3,7 @@ import { Meteor } from "meteor/meteor";
 import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { flexbox } from "@material-ui/system";
+import { withTracker } from "meteor/react-meteor-data";
 import styles from "./styles";
 import {
   withStyles,
@@ -23,7 +24,7 @@ import {
   PowerSettingsNew
 } from "@material-ui/icons";
 
-const Header = ({ classes }) => {
+const Header = ({ classes, currentUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -33,18 +34,20 @@ const Header = ({ classes }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const options = [
-    {
-      path: "/profile",
-      name: "Profile",
-      icon: <Fingerprint fontSize="default" />
-    }
-    // {
-    //   path: "/login",
-    //   name: "Sign Out",
-    //   icon: <PowerSettingsNew fontSize="default" />
-    // }
-  ];
+
+  console.log(currentUser);
+  // const options = [
+  //   {
+  //     path: "/profile",
+  //     name: "Profile",
+  //     icon: <Fingerprint fontSize="default" />
+  //   }
+  //   {
+  //     path: "/login",
+  //     name: "Sign Out",
+  //     icon: <PowerSettingsNew fontSize="default" />
+  //   }
+  // ];
   return (
     <AppBar className={classes.appBar} position="static" color="default">
       <Toolbar className={classes.flexToolbar}>
@@ -70,32 +73,6 @@ const Header = ({ classes }) => {
           </Link>
         </div>
 
-        {/* <IconButton
-          onClick={handleClick}
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          className={classes.iconButton}
-        >
-          <MoreVert />
-        </IconButton>
-        <Menu
-          id="long-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          {options.map((option, index) => (
-            <Link key={index} to={option.path}>
-              <MenuItem to={option.path} onClick={handleClose}>
-                <ListItemIcon>{option.icon}</ListItemIcon>
-                <Typography noWrap>{option.name}</Typography>
-              </MenuItem>
-            </Link>
-          ))}
-        </Menu> */}
-
         <div className={classes.profiledetails}>
           <div className={classes.gravatarcontainer}>
             <Gravatar
@@ -104,8 +81,13 @@ const Header = ({ classes }) => {
             />
           </div>
           <div className={classes.profilenamerating}>
-            <p className={classes.profilename}>Joey Kramer</p>
-            <p className={classes.profilerating}>Rating: 9000</p>
+            <p className={classes.profilename}>
+              {currentUser && currentUser.profile.firstName + " "}
+              {currentUser && currentUser.profile.lastName}
+            </p>
+            <p className={classes.profilerating}>
+              Score: {currentUser && currentUser.profile.score}
+            </p>
           </div>
           <div className={classes.navlinks}>
             <Link to="/profile" style={{ textDecoration: "none" }}>
@@ -134,4 +116,9 @@ const Header = ({ classes }) => {
   );
 };
 
-export default withStyles(styles)(Header);
+export default withTracker(() => {
+  console.log(Meteor.userId());
+  return {
+    currentUser: Meteor.user()
+  };
+})(withStyles(styles)(Header));
