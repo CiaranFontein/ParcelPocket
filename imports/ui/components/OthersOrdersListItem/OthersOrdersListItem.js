@@ -19,9 +19,6 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
             recipient = user;
          }
       });
-      console.log("recipient->" + recipient.profile.firstName);
-      console.log("owner->" + owner.profile.firstName);
-      console.log("currentUser" + currentUser._id + "orderOwner" + order.owner);
    }
 
    const DateDelivered = new Date().toDateString();
@@ -61,10 +58,8 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
 
    return (
       users.length > 1 &&
-      currentUser && (
-         // TODO add this line BEFORE THE ' ( '
-         //when have more orders
-         // currentUser._id === order.owner &&
+      currentUser &&
+      currentUser._id === order.owner && (
          <div className={classes.itemsContainer}>
             <div className={classes.leftContainer}>
                <div className={classes.nameAvatarContainer}>
