@@ -19,7 +19,8 @@ Meteor.methods({
             firstName: user.firstName,
             lastName: user.lastName,
             address: user.address,
-            reciever: user.receiver[0]
+            reciever: user.receiver[0],
+            score: 0
          }
       });
    }
