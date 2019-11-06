@@ -12,7 +12,6 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
    let recipient = null;
 
    if (users.length > 1) {
-      console.log(users.length);
       users.map((user) => {
          if (user._id === order.owner) {
             owner = user;
@@ -21,8 +20,9 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
             recipient = user;
          }
       });
-      console.log("owner->" + owner.profile.firstName);
-      console.log("recipient->" + recipient.profile.firstName);
+      console.log("owner= " + owner.profile.firstName);
+      console.log("recipient= " + recipient.profile.firstName);
+      console.log("Current user= " + currentUser.profile.firstName);
    }
 
    const DateDelivered = new Date().toDateString();

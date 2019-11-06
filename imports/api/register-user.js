@@ -2,7 +2,6 @@ import { Accounts } from "meteor/accounts-base";
 
 Meteor.methods({
    "users.addUser"(user) {
-      console.log(user);
       if (
          Meteor.users
             .find({ emails: { $elemMatch: { address: user.email } } })

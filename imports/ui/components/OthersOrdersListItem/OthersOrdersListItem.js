@@ -10,7 +10,6 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
    let recipient = null;
 
    if (users.length > 1) {
-      console.log(users.length);
       users.map((user) => {
          if (user._id === order.owner) {
             owner = user;
@@ -19,6 +18,9 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
             recipient = user;
          }
       });
+      console.log("owner= " + owner.profile.firstName);
+      console.log("recipient= " + recipient.profile.firstName);
+      console.log("Current user= " + currentUser.profile.firstName);
    }
 
    const DateDelivered = new Date().toDateString();
@@ -46,7 +48,15 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
 
    if (order.status === "In Transit") {
       logButton = (
-         <button className={classes.buttonDelivered}>Delivered</button>
+         <button
+            className={classes.buttonDelivered}
+            onClick={(order) => {
+               console.log("clicked");
+               Meteor.call("orders.changeStatusToDelivered", order);
+            }}
+         >
+            Delivered
+         </button>
       );
    } else if (order.status === "Delivered") {
       logButton = <button className={classes.buttonPickup}>Picked Up</button>;
@@ -59,7 +69,7 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
    return (
       users.length > 1 &&
       currentUser &&
-      currentUser._id === order.owner && (
+      currentUser._id === order.recipient && (
          <div className={classes.itemsContainer}>
             <div className={classes.leftContainer}>
                <div className={classes.nameAvatarContainer}>
