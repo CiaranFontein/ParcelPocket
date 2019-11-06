@@ -18,9 +18,9 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
             recipient = user;
          }
       });
-      console.log("owner= " + owner.profile.firstName);
-      console.log("recipient= " + recipient.profile.firstName);
-      console.log("Current user= " + currentUser.profile.firstName);
+      // console.log("owner= " + owner.profile.firstName);
+      // console.log("recipient= " + recipient.profile.firstName);
+      // console.log("Current user= " + currentUser.profile.firstName);
    }
 
    const DateDelivered = new Date().toDateString();
@@ -50,16 +50,37 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
       logButton = (
          <button
             className={classes.buttonDelivered}
-            onClick={(order) => {
-               console.log("clicked");
-               Meteor.call("orders.changeStatusToDelivered", order);
+            onClick={() => {
+               Meteor.call(
+                  "orders.changeStatusToDelivered",
+                  order,
+                  (err, res) => {
+                     console.log(err, res);
+                  }
+               );
             }}
          >
             Delivered
          </button>
       );
    } else if (order.status === "Delivered") {
-      logButton = <button className={classes.buttonPickup}>Picked Up</button>;
+      logButton = (
+         <button
+            className={classes.buttonPickup}
+            onClick={() => {
+               console.log("clicked");
+               Meteor.call(
+                  "orders.changeStatusToCompleted",
+                  order,
+                  (err, res) => {
+                     console.log(err, res);
+                  }
+               );
+            }}
+         >
+            Picked Up
+         </button>
+      );
    } else {
       logButton = (
          <div className={classes.noButton}>Package Delivered to Owner</div>
