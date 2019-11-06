@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Form, Field } from "react-final-form";
+import { Meteor } from "meteor/meteor";
 import {
   Checkbox,
   TextField,
@@ -22,6 +23,10 @@ const addUser = async values => {
   values.location = location.results[0].geometry.location;
   values.placeId = location.results[0].place_id;
   Meteor.call("users.addUser", values);
+};
+
+const signIn = ({ email, password }) => {
+   Meteor.loginWithPassword(email, password);
 };
 
 const RegisterPage = ({ classes }) => {
