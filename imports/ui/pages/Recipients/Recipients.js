@@ -6,15 +6,20 @@ import styles from "./styles";
 import RecipientMap from "../../components/RecipientMap";
 import Recipient from "../../components/Recipient";
 import { withTracker } from "meteor/react-meteor-data";
+import { Meteor } from "meteor/meteor";
 
+<<<<<<< HEAD
 const Recipients = ({ classes, users, currentUser }) => {
+=======
+const Recipients = ({ classes, recipients, currentUserId }) => {
+>>>>>>> b40a46817d8fe959d7f6feb90468a149c54516e9
   const [transitValue, setTransitValue] = React.useState(10);
   const [distanceValue, setDistanceValue] = React.useState(10);
-
+  // console.log(recipients);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  // console.log(currentUserId);
   return (
     <div className={classes.recipientsPage}>
       <div className={classes.recipientsPageContainer}>
@@ -52,6 +57,7 @@ const Recipients = ({ classes, users, currentUser }) => {
           </div>
         </div>
         <div className={classes.recipientMapContainer}>
+<<<<<<< HEAD
           {currentUser && (
             <RecipientMap user={currentUser} recipients={users} />
           )}
@@ -64,6 +70,15 @@ const Recipients = ({ classes, users, currentUser }) => {
               transitValue={transitValue}
             />
           ))}
+=======
+          <RecipientMap currentUser={Meteor.user()} users={recipients} />
+        </div>
+        <div className={classes.recipientListContainer}>
+          {recipients.length > 0 &&
+            recipients.map((user, index) => (
+              <Recipient key={index} user={user} transitValue={transitValue} />
+            ))}
+>>>>>>> b40a46817d8fe959d7f6feb90468a149c54516e9
         </div>
       </div>
     </div>
@@ -73,8 +88,14 @@ const Recipients = ({ classes, users, currentUser }) => {
 export default withTracker(() => {
   Meteor.subscribe("users");
   return {
+    recipients: Meteor.users
+      .find({
+        $and: [{ _id: { $ne: Meteor.userId() } }, { "profile.reciever": true }]
+      })
+      .fetch(),
     currentUser: Meteor.user(),
-    currentUserId: Meteor.userId(),
-    users: Meteor.users.find({ _id: { $ne: Meteor.userId() } }).fetch()
+    currentUserId: Meteor.userId()
   };
 })(withStyles(styles)(Recipients));
+
+// db.users.find({ $and: [{ _id: {$ne:Meteor.userId()}}, { "profile.reciever" : true}]} ).

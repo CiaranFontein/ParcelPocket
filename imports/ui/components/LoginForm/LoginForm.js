@@ -11,36 +11,39 @@ import { Meteor } from "meteor/meteor";
 class LoginForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      error: null
+    };
   }
 
-  signIn = event => {
-    let email = event.target.loginEmail.value;
-    let password = event.target.loginPassword.value;
-    console.log(event.target.loginEmail.value);
-    console.log(event.target.loginPassword.value);
-
-    Meteor.loginWithPassword(email, password, function(error) {
-      if (Meteor.user()) {
-        console.log(JSON.stringify(Meteor.user(), null, 2));
-        // alert(`Hey, Your User ID is: ${Meteor.userId()}`);
-      } else {
-        alert(error.reason);
-      }
-    });
+  signIn = values => {
+    Meteor.loginWithPassword(
+      values.loginEmail,
+      values.loginPassword,
+      function(error) {
+        if (Meteor.user()) {
+          console.log(JSON.stringify(Meteor.user(), null, 2));
+        }
+        if (error) {
+          this.setState({ error });
+        }
+      }.bind(this)
+    );
   };
 
   render() {
+    console.log(this.state.error);
     const { classes } = this.props;
 
     return (
       <div>
         <Form
-          onSubmit={() => {}}
+          onSubmit={values => this.signIn(values)}
           render={({ handleSubmit }) => (
             <form
               onSubmit={event => {
                 event.preventDefault();
-                this.signIn(event);
+                handleSubmit();
               }}
               className={classes.form}
             >
@@ -95,9 +98,15 @@ class LoginForm extends Component {
             </form>
           )}
         />
+        {this.state.error && (
+          <p className={classes.errorMessage}>
+            Username or Password do not match.
+          </p>
+        )}
       </div>
     );
   }
 }
 
 export default withStyles(styles)(LoginForm);
+//{this.state.error.message}

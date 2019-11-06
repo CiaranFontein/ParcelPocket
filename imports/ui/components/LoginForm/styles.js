@@ -37,6 +37,10 @@ const styles = theme => ({
     justifyContent: "space-evenly",
     borderRadius: "150px",
     marginTop: "20px"
+  },
+  errorMessage: {
+    textAlign: "center",
+    color: "blue"
   }
 });
 

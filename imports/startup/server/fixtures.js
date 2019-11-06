@@ -1,6 +1,5 @@
 import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
-import Orders from "../../api/orders";
 
 Meteor.startup(() => {
   if (Meteor.users.find().count() === 0) {
