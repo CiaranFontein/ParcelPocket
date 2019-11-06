@@ -6,15 +6,16 @@ import styles from "./styles";
 import RecipientMap from "../../components/RecipientMap";
 import Recipient from "../../components/Recipient";
 import { withTracker } from "meteor/react-meteor-data";
+import { Meteor } from "meteor/meteor";
 
-const Recipients = ({ classes, users }) => {
+const Recipients = ({ classes, recipients, currentUserId }) => {
   const [transitValue, setTransitValue] = React.useState(10);
   const [distanceValue, setDistanceValue] = React.useState(10);
-
+  // console.log(recipients);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  // console.log(currentUserId);
   return (
     <div className={classes.recipientsPage}>
       <div className={classes.recipientsPageContainer}>
@@ -52,12 +53,13 @@ const Recipients = ({ classes, users }) => {
           </div>
         </div>
         <div className={classes.recipientMapContainer}>
-          <RecipientMap currentUser={Meteor.user()} users={users} />
+          <RecipientMap currentUser={Meteor.user()} users={recipients} />
         </div>
         <div className={classes.recipientListContainer}>
-          {users.map((user, index) => (
-            <Recipient key={index} user={user} transitValue={transitValue} />
-          ))}
+          {recipients.length > 0 &&
+            recipients.map((user, index) => (
+              <Recipient key={index} user={user} transitValue={transitValue} />
+            ))}
         </div>
       </div>
     </div>
@@ -67,8 +69,14 @@ const Recipients = ({ classes, users }) => {
 export default withTracker(() => {
   Meteor.subscribe("users");
   return {
+    recipients: Meteor.users
+      .find({
+        $and: [{ _id: { $ne: Meteor.userId() } }, { "profile.reciever": true }]
+      })
+      .fetch(),
     currentUser: Meteor.user(),
-    currentUserId: Meteor.userId(),
-    users: Meteor.users.find({ _id: { $ne: Meteor.userId() } }).fetch()
+    currentUserId: Meteor.userId()
   };
 })(withStyles(styles)(Recipients));
+
+// db.users.find({ $and: [{ _id: {$ne:Meteor.userId()}}, { "profile.reciever" : true}]} ).

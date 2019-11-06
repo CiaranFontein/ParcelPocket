@@ -48,7 +48,7 @@ const Header = ({ classes }) => {
   return (
     <AppBar className={classes.appBar} position="static" color="default">
       <Toolbar className={classes.flexToolbar}>
-        <Link to="/recipients">
+        <Link className={classes.logoimg} to="/recipients">
           <img
             src="http://localhost:3000/images/white_small_transparent.png"
             alt="logo"

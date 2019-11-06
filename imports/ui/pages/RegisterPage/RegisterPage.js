@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Form, Field } from "react-final-form";
+import { Meteor } from "meteor/meteor";
 import {
    Checkbox,
    TextField,
@@ -16,6 +17,10 @@ import styles from "./styles";
 const addUser = (values) => {
    console.log(values);
    Meteor.call("users.addUser", values);
+};
+
+const signIn = ({ email, password }) => {
+   Meteor.loginWithPassword(email, password);
 };
 
 const RegisterPage = ({ classes }) => {

@@ -20,9 +20,9 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
             recipient = user;
          }
       });
-      console.log("owner= " + owner.profile.firstName);
-      console.log("recipient= " + recipient.profile.firstName);
-      console.log("Current user= " + currentUser.profile.firstName);
+      // console.log("owner= " + owner.profile.firstName);
+      // console.log("recipient= " + recipient.profile.firstName);
+      // console.log("Current user= " + currentUser.profile.firstName);
    }
 
    const DateDelivered = new Date().toDateString();
@@ -62,10 +62,41 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
    } else {
       logButton = (
          <React.Fragment>
-            <button className={classes.buttonOnUp}>
+            <button
+               className={classes.buttonOnUp}
+               onClick={() => {
+                  Meteor.call("users.addRating", recipient, (err, res) => {
+                     console.log(err, res);
+                  });
+                  Meteor.call(
+                     "orders.changeStatusToFinished",
+                     order,
+                     (err, res) => {
+                        console.log(err, res);
+                     }
+                  );
+                  console.log(recipient.score);
+               }}
+            >
                <ThumbUpIcon />
             </button>
-            <button className={classes.buttonOnDown}>
+            <button
+               className={classes.buttonOnDown}
+               onClick={() => {
+                  Meteor.call("users.subtractRating", recipient, (err, res) => {
+                     console.log(err, res);
+                  });
+                  Meteor.call(
+                     "orders.changeStatusToFinished",
+                     order,
+                     (err, res) => {
+                        console.log(err, res);
+                     }
+                  );
+
+                  console.log(recipient.score);
+               }}
+            >
                <ThumbDownIcon />
             </button>
          </React.Fragment>
