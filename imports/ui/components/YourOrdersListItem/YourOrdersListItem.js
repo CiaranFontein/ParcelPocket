@@ -74,10 +74,8 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
 
    return (
       users.length > 1 &&
-      currentUser && (
-         // TODO add this line BEFORE THE ' ( '
-         //when have more orders
-         // currentUser._id === order.owner &&
+      currentUser &&
+      currentUser._id === order.owner && (
          <div className={classes.itemsContainer}>
             <div className={classes.leftContainer}>
                <div className={classes.nameAvatarContainer}>
