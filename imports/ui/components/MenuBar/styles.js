@@ -58,11 +58,15 @@ const styles = theme => ({
   },
   iconButton: {
     fontSize: "20px",
-    textTransform: "capitalize",
-    margin: "20px"
+    textTransform: "capitalize"
   },
   logoimg: {
     padding: "20px"
+  },
+  mainlinks: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    width: "25%"
   }
 });
 
