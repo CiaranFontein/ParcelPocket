@@ -20,7 +20,10 @@ Meteor.methods({
    },
    "orders.changeStatusToDelivered"(order) {
       if (order.recipient !== Meteor.userId()) {
-         throw new Meteor.Error("You are not allowed to change status.");
+         throw new Meteor.Error(
+            "orders.changeStatusToDelivered.not-authorized",
+            "You are not allowed to change status."
+         );
       }
       Orders.update(order._id, {
          $set: { status: "Delivered" }
@@ -28,10 +31,18 @@ Meteor.methods({
    },
    "orders.changeStatusToCompleted"(order) {
       if (order.recipient !== Meteor.userId()) {
-         throw new Meteor.Error("You are not allowed to change status.");
+         throw new Meteor.Error(
+            "orders.changeStatusToCompleted.not-authorized",
+            "You are not allowed to change status."
+         );
       }
       Orders.update(order._id, {
          $set: { status: "Completed" }
+      });
+   },
+   "orders.changeStatusToFinished"(order) {
+      Orders.update(order._id, {
+         $set: { status: "Finished" }
       });
    }
 });
