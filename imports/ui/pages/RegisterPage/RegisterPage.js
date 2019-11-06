@@ -34,7 +34,7 @@ const RegisterPage = ({ classes }) => {
          <div className={classes.registerFormContainer}>
             <h1>Register</h1>
             <Form
-               onSubmit={addUser && setTimeout(signIn, 1000)}
+               onSubmit={addUser}
                // validate={true}
                render={({ handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
