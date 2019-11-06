@@ -10,7 +10,7 @@ Meteor.startup(() => {
             firstName: "Madison",
             lastName: "Hunter",
             address: "1475 W Broadway, Vancouver, BC",
-            reciever: false,
+            reciever: true,
             ownedOrders: [],
             otherOrders: [],
             score: 10
