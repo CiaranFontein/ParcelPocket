@@ -7,7 +7,7 @@ import RecipientMap from "../../components/RecipientMap";
 import Recipient from "../../components/Recipient";
 import { withTracker } from "meteor/react-meteor-data";
 
-const Recipients = ({ classes, users, user }) => {
+const Recipients = ({ classes, users, currentUser }) => {
   const [transitValue, setTransitValue] = React.useState(10);
   const [distanceValue, setDistanceValue] = React.useState(10);
 
@@ -52,11 +52,21 @@ const Recipients = ({ classes, users, user }) => {
           </div>
         </div>
         <div className={classes.recipientMapContainer}>
-          <RecipientMap currentUser={user} users={users} />
+          {currentUser &&
+            (currentUser.profile.location && (
+              <RecipientMap
+                location={currentUser.profile.location}
+                recipients={users}
+              />
+            ))}
         </div>
         <div className={classes.recipientListContainer}>
-          {users.map((user, index) => (
-            <Recipient key={index} user={user} transitValue={transitValue} />
+          {users.map((recipient, index) => (
+            <Recipient
+              key={index}
+              recipient={recipient}
+              transitValue={transitValue}
+            />
           ))}
         </div>
       </div>

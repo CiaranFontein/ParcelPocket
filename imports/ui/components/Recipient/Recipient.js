@@ -4,7 +4,7 @@ import styles from "./styles";
 import Gravatar from "react-gravatar";
 import { withTracker } from "meteor/react-meteor-data";
 
-const Recipient = ({ classes, user, currentUserId, transitValue }) => {
+const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
   addOrder = () => {
     Meteor.call("orders.addOrder", currentUserId, user._id, transitValue);
   };
@@ -14,10 +14,12 @@ const Recipient = ({ classes, user, currentUserId, transitValue }) => {
         {/* <Gravatar email={user.email} /> */}
       </div>
       <div className={classes.recipientName}>
-        {user.profile.firstName} {user.profile.lastName}
+        {recipient.profile.firstName} {recipient.profile.lastName}
       </div>
-      <div className={classes.recipientAddress}>{user.profile.address}</div>
-      <div className={classes.recipientScore}>{user.profile.score}</div>
+      <div className={classes.recipientAddress}>
+        {recipient.profile.address}
+      </div>
+      <div className={classes.recipientScore}>{recipient.profile.score}</div>
       <Button onClick={addOrder}>Select This Recipient</Button>
     </div>
   );
