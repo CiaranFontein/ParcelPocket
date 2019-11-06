@@ -2,38 +2,40 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import Gravatar from "react-gravatar";
+import { withTracker } from "meteor/react-meteor-data";
 
-const OthersOrdersListItem = ({ classes, order, viewer }) => {
+const OthersOrdersListItem = ({ classes, order }) => {
    //TODO  delete the viewer, date and order fake data
-   viewer = {
-      _id: "5678"
-   };
+   // viewer = {
+   //    _id: "5678"
+   // };
 
-   order = {
-      _id: "123456",
-      status: "In Transit",
-      receiver: {
-         _id: "9876",
-         name: "Joe Kramer",
-         email: "test@test.com",
-         address: "1234, W Broadway, Vancouver BC",
-         ratings: "400",
-         receiver: false
-      },
-      owner: {
-         _id: "5678",
-         name: "Madison Hunter",
-         email: "test@test.com",
-         address: "1234, W Broadway, Vancouver BC",
-         ratings: "400",
-         receiver: false
-      },
-      dateExpected: "Dec 25, 2019"
-   };
-   DateDelivered = "Dec 28, 2019";
+   // order = {
+   //    _id: "123456",
+   //    status: "In Transit",
+   //    recipient: {
+   //       _id: "9876",
+   //       name: "Joe Kramer",
+   //       email: "test@test.com",
+   //       address: "1234, W Broadway, Vancouver BC",
+   //       ratings: "400",
+   //       receiver: false
+   //    },
+   //    owner: {
+   //       _id: "5678",
+   //       name: "Madison Hunter",
+   //       email: "test@test.com",
+   //       address: "1234, W Broadway, Vancouver BC",
+   //       ratings: "400",
+   //       receiver: false
+   //    },
+   //    latestDeliverydate: "Dec 25, 2019"
+   // };
    //TODO Delete data above for order, date and viewer
 
    //Code bellow here< above just fake data
+   const DateDelivered = new Date().toDateString();
+
    if (order.status === "Complete") {
       logDate = (
          <div>
@@ -45,7 +47,9 @@ const OthersOrdersListItem = ({ classes, order, viewer }) => {
       logDate = (
          <div>
             Expected Delivery Date:{" "}
-            <span className={classes.orderIdAndDate}>{order.dateExpected}</span>
+            <span className={classes.orderIdAndDate}>
+               {order.latestDeliverydate}
+            </span>
          </div>
       );
    }
@@ -61,7 +65,7 @@ const OthersOrdersListItem = ({ classes, order, viewer }) => {
          <div className={classes.noButton}>Package Delivered to Owner</div>
       );
    }
-   if (viewer._id === order.owner._id) {
+   if (currentUser._id === ownerOrder._id) {
       return (
          <div className={classes.itemsContainer}>
             <div className={classes.leftContainer}>
@@ -69,10 +73,10 @@ const OthersOrdersListItem = ({ classes, order, viewer }) => {
                   <div className={classes.userAvatar}>
                      <Gravatar
                         className={classes.userAvatarImg}
-                        email={order.owner.email}
+                        email={ownerOrder.email}
                      />
                   </div>
-                  <div className={classes.userName}>{order.owner.name}</div>
+                  <div className={classes.userName}>{ownerOrder.name}</div>
                </div>
                <div className={classes.dateInfo}>
                   <span></span>
@@ -95,4 +99,10 @@ const OthersOrdersListItem = ({ classes, order, viewer }) => {
    }
 };
 
-export default withStyles(styles)(OthersOrdersListItem);
+export default withTracker(() => {
+   Meteor.subscribe("users");
+   return {
+      currentUser: Meteor.user(),
+      ownerOrder: Meteor.users.find({ _id: { $eq: order.recipient } }).fetch()
+   };
+})(withStyles(styles)(OthersOrdersListItem));
