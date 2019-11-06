@@ -1,7 +1,7 @@
-import { Mongo } from "meteor/mongo";
+import { Meteor } from "meteor/meteor";
 
 if (Meteor.isServer) {
-  Meteor.publish("users", function usersPublication() {
-    return Meteor.users.find({});
-  });
+   Meteor.publish("users", function usersPublication() {
+      return Meteor.users.find({});
+   });
 }

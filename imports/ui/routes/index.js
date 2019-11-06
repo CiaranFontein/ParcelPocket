@@ -15,7 +15,7 @@ const _Routes = ({ currentUserId }) => {
     if (!currentUserId) {
       return (
         <Switch>
-          <Route path="/login" component={AccountLogin} />
+          <Route exact path="/login" component={AccountLogin} />
           <Route path="/register" component={RegisterPage} />
           <Redirect from="*" to="/login" />
         </Switch>
@@ -26,11 +26,34 @@ const _Routes = ({ currentUserId }) => {
     <Fragment>
       <MenuBar />
       <Switch>
-        <PrivateRoute exact path="/recipients" component={Recipients} />
-        <PrivateRoute exact path="/yourorders" component={YourOrders} />
-        <PrivateRoute exact path="/othersorders" component={OthersOrders} />
-        <PrivateRoute path="/profile/:id" component={Profile} />
-        <PrivateRoute path="/profile" component={Profile} />
+        <PrivateRoute
+          exact
+          path="/yourorders"
+          component={YourOrders}
+          currentUserId={currentUserId}
+        />
+        <PrivateRoute
+          exact
+          path="/recipients"
+          component={Recipients}
+          currentUserId={currentUserId}
+        />
+        <PrivateRoute
+          exact
+          path="/othersorders"
+          component={OthersOrders}
+          currentUserId={currentUserId}
+        />
+        <PrivateRoute
+          path="/profile"
+          component={Profile}
+          currentUserId={currentUserId}
+        />
+        <PrivateRoute
+          path="/profile/:id"
+          component={Profile}
+          currentUserId={currentUserId}
+        />
         <Redirect from="*" to="/yourorders" />
       </Switch>
     </Fragment>
