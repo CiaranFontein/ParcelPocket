@@ -6,12 +6,24 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
-import { Users } from "../../../api/users";
 
 const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
-   // console.log(order);
-   console.log(currentUser);
-   console.log(users);
+   let owner = null;
+   let recipient = null;
+
+   if (users.length > 1) {
+      console.log(users.length);
+      users.map((user) => {
+         if (user._id === order.owner) {
+            owner = user;
+         }
+         if (user._id === order.recipient) {
+            recipient = user;
+         }
+      });
+      console.log("owner->" + owner.profile.firstName);
+      console.log("recipient->" + recipient.profile.firstName);
+   }
 
    const DateDelivered = new Date().toDateString();
 
@@ -26,7 +38,12 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
       logDate = (
          <div>
             Expected Delivery Date:
-            <span className={classes.orderIdAndDate}>{order.dateExpected}</span>
+            <span className={classes.orderIdAndDate}>
+               {
+                  order.maxDeliveryDays
+                  //TODO fix this variable here!!!
+               }
+            </span>
          </div>
       );
    }
@@ -54,54 +71,56 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
          </React.Fragment>
       );
    }
-   // if (currentUser._id === ownerOrder._id) {
+
    return (
-      <div className={classes.itemsContainer}>
-         <div className={classes.leftContainer}>
-            <div className={classes.nameAvatarContainer}>
-               <div className={classes.userAvatar}>
-                  <Gravatar
-                     className={classes.userAvatarImg}
-                     email={recipientOrder.emails.row[0].address}
-                  />
+      users.length > 1 &&
+      currentUser && (
+         // TODO add this line BEFORE THE ' ( '
+         //when have more orders
+         // currentUser._id === order.owner &&
+         <div className={classes.itemsContainer}>
+            <div className={classes.leftContainer}>
+               <div className={classes.nameAvatarContainer}>
+                  <div className={classes.userAvatar}>
+                     <Gravatar
+                        className={classes.userAvatarImg}
+                        email={recipient.emails[0].address}
+                     />
+                  </div>
+                  <div className={classes.userName}>
+                     {recipient.profile.firstName +
+                        " " +
+                        recipient.profile.lastName}
+                  </div>
                </div>
-               <div className={classes.userName}>
-                  {recipientOrder.profile.firstName +
-                     " " +
-                     recipientOrder.profile.lastName}
+               <div className={classes.dateInfo}>
+                  <span></span>
+                  {logDate}
+               </div>
+               <div className={classes.orderNumber}>
+                  Order Number:
+                  <span className={classes.orderIdAndDate}>{order._id}</span>
                </div>
             </div>
-            <div className={classes.dateInfo}>
-               <span></span>
-               {logDate}
-            </div>
-            <div className={classes.orderNumber}>
-               Order Number:
-               <span className={classes.orderIdAndDate}>{order._id}</span>
+            <div className={classes.rightContainer}>
+               <div className={classes.orderIdAndDate}>
+                  {recipient.profile.address}
+               </div>
+               <div>
+                  Order Status:
+                  <span className={classes.orderStatus}>{order.status}</span>
+               </div>
+               <div>{logButton}</div>
             </div>
          </div>
-         <div className={classes.rightContainer}>
-            <div className={classes.orderIdAndDate}>
-               {recipientOrder.address}
-            </div>
-            <div>
-               Order Status:
-               <span className={classes.orderStatus}>{order.status}</span>
-            </div>
-            <div>{logButton}</div>
-         </div>
-      </div>
+      )
    );
-   // } else {
-   //    <h1>You need to log in</h1>;
-   // }
 };
 
 export default withTracker(() => {
    Meteor.subscribe("users");
-   console.log(Users.find({}).fetch());
    return {
+      users: Meteor.users.find({}).fetch(),
       currentUser: Meteor.user()
-      // users: Meteor.users.find({}).fetch()
    };
 })(withStyles(styles)(YourOrdersListItem));

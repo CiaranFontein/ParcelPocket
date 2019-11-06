@@ -7,8 +7,6 @@ import RegisterPage from "../pages/RegisterPage";
 import Recipients from "../pages/Recipients";
 import YourOrders from "../pages/YourOrders";
 import OthersOrders from "../pages/OthersOrders";
-import OthersOrdersListItem from "../components/OthersOrdersListItem";
-import YourOrdersListItem from "../components/YourOrdersListItem";
 import Profile from "../pages/Profile";
 import { withTracker } from "meteor/react-meteor-data";
 
