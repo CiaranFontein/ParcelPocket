@@ -9,10 +9,14 @@ import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const Recipients = ({ classes, users, currentUser }) => {
 =======
 const Recipients = ({ classes, recipients, currentUserId }) => {
 >>>>>>> b40a46817d8fe959d7f6feb90468a149c54516e9
+=======
+const Recipients = ({ classes, recipients, currentUserId }) => {
+>>>>>>> cff44adbbd2ec2af741e739e45362a07e293f513
   const [transitValue, setTransitValue] = React.useState(10);
   const [distanceValue, setDistanceValue] = React.useState(10);
   // console.log(recipients);
@@ -58,6 +62,7 @@ const Recipients = ({ classes, recipients, currentUserId }) => {
         </div>
         <div className={classes.recipientMapContainer}>
 <<<<<<< HEAD
+<<<<<<< HEAD
           {currentUser && (
             <RecipientMap user={currentUser} recipients={users} />
           )}
@@ -71,6 +76,9 @@ const Recipients = ({ classes, recipients, currentUserId }) => {
             />
           ))}
 =======
+=======
+
+>>>>>>> cff44adbbd2ec2af741e739e45362a07e293f513
           <RecipientMap currentUser={Meteor.user()} users={recipients} />
         </div>
         <div className={classes.recipientListContainer}>
@@ -78,7 +86,10 @@ const Recipients = ({ classes, recipients, currentUserId }) => {
             recipients.map((user, index) => (
               <Recipient key={index} user={user} transitValue={transitValue} />
             ))}
+<<<<<<< HEAD
 >>>>>>> b40a46817d8fe959d7f6feb90468a149c54516e9
+=======
+>>>>>>> cff44adbbd2ec2af741e739e45362a07e293f513
         </div>
       </div>
     </div>
