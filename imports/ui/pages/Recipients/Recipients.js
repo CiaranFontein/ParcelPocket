@@ -66,13 +66,13 @@ const Recipients = ({ classes, users, recipients }) => {
 };
 
 export default withTracker(() => {
-  Meteor.subscribe("recipients");
+  Meteor.subscribe("users");
   return {
-    currentUser: Meteor.user(),
-    currentUserId: Meteor.userId(),
-    users: Meteor.users.find({ _id: { $ne: Meteor.userId() } }).fetch(),
     recipients: Meteor.users
       .find({ _id: { $ne: Meteor.userId() }, "profile.receiver": true })
-      .fetch()
+      .fetch(),
+    currentUser: Meteor.user(),
+    currentUserId: Meteor.userId(),
+    users: Meteor.users.find({ _id: { $ne: Meteor.userId() } }).fetch()
   };
 })(withStyles(styles)(Recipients));
