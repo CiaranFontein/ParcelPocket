@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
+import { Accounts } from "meteor/accounts-base";
 import { Form, Field } from "react-final-form";
 import { Meteor } from "meteor/meteor";
 import {
-   Checkbox,
-   TextField,
-   Radio,
-   RadioGroup,
-   FormLabel,
-   FormControlLabel,
-   StyledRadio,
-   FormControl
+  Checkbox,
+  TextField,
+  Radio,
+  RadioGroup,
+  FormLabel,
+  FormControlLabel,
+  StyledRadio,
+  FormControl
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import styles from "./styles";
@@ -26,8 +27,9 @@ const addUser = async (values) => {
    Meteor.call("users.addUser", values);
 };
 
-const signIn = ({ email, password }) => {
-   Meteor.loginWithPassword(email, password);
+  Accounts.createUser(user, error => {
+    if (error) console.log(error);
+  });
 };
 
 const RegisterPage = ({ classes }) => {
@@ -206,6 +208,7 @@ const RegisterPage = ({ classes }) => {
             />
          </div>
       </div>
-   );
+    </div>
+  );
 };
 export default withStyles(styles)(RegisterPage);
