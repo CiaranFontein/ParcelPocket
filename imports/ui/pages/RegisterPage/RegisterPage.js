@@ -45,11 +45,14 @@ const addUser = async values => {
 const RegisterPage = ({ classes }) => {
   return (
     <div className={classes.registerContainer}>
-      <img
-        className={classes.logo}
-        src="/images/white_small.png"
-        alt="pp logo"
-      />
+      <Link to="/login">
+        <img
+          className={classes.logo}
+          src="/images/white_small.png"
+          alt="pp logo"
+        />
+      </Link>
+
       <div className={classes.registerFormContainer}>
         <h1>Register</h1>
         <Form
