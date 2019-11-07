@@ -35,7 +35,7 @@ const Header = ({ classes, currentUser }) => {
     setAnchorEl(null);
   };
 
-  console.log(currentUser);
+  // console.log(currentUser);
   // const options = [
   //   {
   //     path: "/profile",
@@ -117,7 +117,7 @@ const Header = ({ classes, currentUser }) => {
 };
 
 export default withTracker(() => {
-  console.log(Meteor.userId());
+  // console.log(Meteor.userId());
   return {
     currentUser: Meteor.user()
   };

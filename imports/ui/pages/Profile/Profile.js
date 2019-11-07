@@ -7,7 +7,7 @@ import { TextField } from "@material-ui/core";
 import { withTracker } from "meteor/react-meteor-data";
 
 const updateProfile = values => {
-  console.log(values);
+  // console.log(values);
   // // Meteor.call("users.addUser", values);
   Meteor.users.update(Meteor.userId(), { $set: { profile: values } });
   // const updateUser = Meteor.users.find();
@@ -154,7 +154,7 @@ const Profile = props => {
 };
 
 export default withTracker(() => {
-  console.log(Meteor.userId());
+  // console.log(Meteor.userId());
   return {
     currentUser: Meteor.users.findOne({ _id: Meteor.userId() })
   };
