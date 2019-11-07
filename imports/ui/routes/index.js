@@ -11,58 +11,58 @@ import Profile from "../pages/Profile";
 import { withTracker } from "meteor/react-meteor-data";
 
 const _Routes = ({ currentUserId }) => {
-  {
-    if (!currentUserId) {
-      return (
-        <Switch>
-          <Route exact path="/login" component={AccountLogin} />
-          <Route path="/register" component={RegisterPage} />
-          <Redirect from="*" to="/login" />
-        </Switch>
-      );
-    }
-  }
-  return (
-    <Fragment>
-      <MenuBar />
-      <Switch>
-        <PrivateRoute
-          exact
-          path="/yourorders"
-          component={YourOrders}
-          currentUserId={currentUserId}
-        />
-        <PrivateRoute
-          exact
-          path="/recipients"
-          component={Recipients}
-          currentUserId={currentUserId}
-        />
-        <PrivateRoute
-          exact
-          path="/othersorders"
-          component={OthersOrders}
-          currentUserId={currentUserId}
-        />
-        <PrivateRoute
-          path="/profile"
-          component={Profile}
-          currentUserId={currentUserId}
-        />
-        <PrivateRoute
-          path="/profile/:id"
-          component={Profile}
-          currentUserId={currentUserId}
-        />
-        <Redirect from="*" to="/yourorders" />
-      </Switch>
-    </Fragment>
-  );
+   {
+      if (!currentUserId) {
+         return (
+            <Switch>
+               <Route exact path="/login" component={AccountLogin} />
+               <Route path="/register" component={RegisterPage} />
+               <Redirect from="*" to="/login" />
+            </Switch>
+         );
+      }
+   }
+   return (
+      <Fragment>
+         <MenuBar />
+         <Switch>
+            <PrivateRoute
+               exact
+               path="/orders"
+               component={YourOrders}
+               currentUserId={currentUserId}
+            />
+            <PrivateRoute
+               exact
+               path="/recipients"
+               component={Recipients}
+               currentUserId={currentUserId}
+            />
+            <PrivateRoute
+               exact
+               path="/parcels"
+               component={OthersOrders}
+               currentUserId={currentUserId}
+            />
+            <PrivateRoute
+               path="/profile"
+               component={Profile}
+               currentUserId={currentUserId}
+            />
+            <PrivateRoute
+               path="/profile/:id"
+               component={Profile}
+               currentUserId={currentUserId}
+            />
+            <Redirect from="*" to="/orders" />
+         </Switch>
+      </Fragment>
+   );
 };
 
 export default Routes = withTracker(() => {
-  return {
-    currentUser: Meteor.user(),
-    currentUserId: Meteor.userId()
-  };
+   return {
+      currentUser: Meteor.user(),
+      currentUserId: Meteor.userId()
+   };
 })(_Routes);
