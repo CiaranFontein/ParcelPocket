@@ -109,4 +109,3 @@ class LoginForm extends Component {
 }
 
 export default withStyles(styles)(LoginForm);
-//{this.state.error.message}

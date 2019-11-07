@@ -1,17 +1,14 @@
 import React from "react";
-import { withStyles, Button } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 import Gravatar from "react-gravatar";
-import { withTracker } from "meteor/react-meteor-data";
+import AddOrder from "../../components/AddOrder/AddOrder";
 
 const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
-  addOrder = () => {
-    Meteor.call("orders.addOrder", currentUserId, recipient._id, transitValue);
-  };
   return recipient ? (
     <div className={classes.recipientContainer}>
       <div className={classes.recipientAvatar}>
-        {/* <Gravatar email={user.email} /> */}
+        <Gravatar email={recipient.email} />
       </div>
       <div className={classes.recipientName}>
         {recipient.profile.firstName} {recipient.profile.lastName}
@@ -20,16 +17,15 @@ const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
         {recipient.profile.address}
       </div>
       <div className={classes.recipientScore}>{recipient.profile.score}</div>
-      <Button onClick={addOrder}>Select This Recipient</Button>
+      <AddOrder
+        currentUserId={currentUserId}
+        recipient={recipient}
+        transitValue={transitValue}
+      />
     </div>
   ) : (
     ""
   );
 };
 
-export default withTracker(() => {
-  Meteor.subscribe("users");
-  return {
-    currentUserId: Meteor.userId()
-  };
-})(withStyles(styles)(Recipient));
+export default withStyles(styles)(Recipient);

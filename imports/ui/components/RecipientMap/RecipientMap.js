@@ -1,6 +1,6 @@
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import React, { Component, Fragment } from "react";
-
+import Recipient from "../Recipient";
 const API_KEY = Meteor.settings.public.REACT_APP_GOOGLE_API_KEY;
 
 class RecipientMap extends Component {
@@ -13,25 +13,30 @@ class RecipientMap extends Component {
     };
   }
 
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
+  onMarkerClick = (props, marker) => {
+    console.log(props);
+    return this.setState({
       activeMarker: marker,
-      showingInfoWindow: true
+      selectedPlace: props,
+      showingInfoWindow: true,
+      selectedUser: marker.user
+    });
+  };
+
+  onInfoWindowClose = () =>
+    this.setState({
+      activeMarker: null,
+      showingInfoWindow: false
     });
 
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
+  addOrder = () => {
+    Meteor.call("orders.addOrder", currentUserId, recipient._id, transitValue);
   };
 
   //const directionsService = new google.maps.DirectionsService();
   render() {
-    const { user, google, recipients } = this.props;
+    const { user, google, recipients, transitValue } = this.props;
+    if (!this.props.loaded) return <div>Loading...</div>;
     return (
       <Fragment>
         <Map google={google} zoom={15} initialCenter={user.profile.location}>
@@ -41,20 +46,21 @@ class RecipientMap extends Component {
                 key={index}
                 position={recipient.profile.location}
                 onClick={this.onMarkerClick}
-                name={"Kenyatta International Convention Centre"}
-              >
-                <InfoWindow
-                  marker={this.state.activeMarker}
-                  visible={this.state.showingInfoWindow}
-                  onClose={this.onClose}
-                >
-                  <div>
-                    <h4>{this.state.selectedPlace.name}</h4>
-                  </div>
-                </InfoWindow>
-              </Marker>
+                name={recipient.profile.firstName}
+                user={recipient}
+              />
             );
           })}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            onClose={this.onInfoWindowClose}
+            visible={this.state.showingInfoWindow}
+          >
+            <Recipient
+              recipient={this.state.selectedUser}
+              transitValue={transitValue}
+            />
+          </InfoWindow>
         </Map>
       </Fragment>
     );

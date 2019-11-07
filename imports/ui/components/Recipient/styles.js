@@ -5,9 +5,7 @@ const styles = theme => ({
     alignItems: "center"
   },
   recipientContainer: {
-    width: "100%",
-    border: 1,
-    border: "3px solid rgb(212, 212, 212)"
+    width: "100%"
   }
 });
 
