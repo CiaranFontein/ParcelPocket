@@ -2,52 +2,22 @@ import React from "react";
 import { Meteor } from "meteor/meteor";
 import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
-import { flexbox } from "@material-ui/system";
 import { withTracker } from "meteor/react-meteor-data";
 import styles from "./styles";
-import {
-   withStyles,
-   AppBar,
-   Toolbar,
-   IconButton,
-   Button,
-   MenuItem,
-   Menu,
-   Typography,
-   ListItemIcon
-} from "@material-ui/core";
+import { withStyles, AppBar, Toolbar, Button } from "@material-ui/core";
 import { withRouter } from "react-router";
-import {
-   MoreVert,
-   Fingerprint,
-   AddCircle,
-   PowerSettingsNew
-} from "@material-ui/icons";
 
 const Header = ({ classes, currentUser }) => {
-   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-   const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-   };
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
 
-   const handleClose = () => {
-      setAnchorEl(null);
-   };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-  // console.log(currentUser);
-  // const options = [
-  //   {
-  //     path: "/profile",
-  //     name: "Profile",
-  //     icon: <Fingerprint fontSize="default" />
-  //   }
-  //   {
-  //     path: "/login",
-  //     name: "Sign Out",
-  //     icon: <PowerSettingsNew fontSize="default" />
-  //   }
-  // ];
   return (
     <AppBar className={classes.appBar} position="static" color="default">
       <Toolbar className={classes.flexToolbar}>
@@ -59,76 +29,65 @@ const Header = ({ classes, currentUser }) => {
           />
         </Link>
 
-            <div className={classes.mainlinks}>
-               <Link to="/recipients" style={{ textDecoration: "none" }}>
-                  <Button className={classes.iconButton}>Create Order</Button>
-               </Link>
+        <div className={classes.mainlinks}>
+          <Link to="/recipients" style={{ textDecoration: "none" }}>
+            <Button className={classes.iconButton}>Create Order</Button>
+          </Link>
 
-               <Link to="/orders" style={{ textDecoration: "none" }}>
-                  <Button className={classes.iconButton}>Orders</Button>
-               </Link>
+          <Link to="/orders" style={{ textDecoration: "none" }}>
+            <Button className={classes.iconButton}>Orders</Button>
+          </Link>
 
-               <Link to="/parcels" style={{ textDecoration: "none" }}>
-                  <Button className={classes.iconButton}>Parcels</Button>
-               </Link>
-            </div>
+          <Link to="/parcels" style={{ textDecoration: "none" }}>
+            <Button className={classes.iconButton}>Parcels</Button>
+          </Link>
+        </div>
 
-            <div className={classes.profiledetails}>
-               <div className={classes.gravatarcontainer}>
-                  <Gravatar
-                     className={classes.gravatarimage}
-                     email="ciaran.fountain@gmail.com"
-                  />
-               </div>
-               <div className={classes.profilenamerating}>
-                  <p className={classes.profilename}>
-                     {currentUser && currentUser.profile.firstName + " "}
-                     {currentUser && currentUser.profile.lastName}
-                  </p>
-                  <p className={classes.profilerating}>
-                     Score: {currentUser && currentUser.profile.score}
-                  </p>
-               </div>
-               <div className={classes.navlinks}>
-                  <Link to="/profile" style={{ textDecoration: "none" }}>
-                     <Button
-                        className={classes.navlinksbutton}
-                        variant="contained"
-                     >
-                        Profile
-                     </Button>
-                  </Link>
+        <div className={classes.profiledetails}>
+          <div className={classes.gravatarcontainer}>
+            <Gravatar
+              className={classes.gravatarimage}
+              email="ciaran.fountain@gmail.com"
+            />
+          </div>
+          <div className={classes.profilenamerating}>
+            <p className={classes.profilename}>
+              {currentUser && currentUser.profile.firstName + " "}
+              {currentUser && currentUser.profile.lastName}
+            </p>
+            <p className={classes.profilerating}>
+              Score: {currentUser && currentUser.profile.score}
+            </p>
+          </div>
+          <div className={classes.navlinks}>
+            <Link to="/profile" style={{ textDecoration: "none" }}>
+              <Button className={classes.navlinksbutton} variant="contained">
+                Profile
+              </Button>
+            </Link>
 
-                  <Link to="/login" style={{ textDecoration: "none" }}>
-                     <Button
-                        className={classes.navlinksbutton}
-                        onClick={() =>
-                           Meteor.logout((error) => {
-                              console.log(error);
-                           })
-                        }
-                        variant="contained"
-                     >
-                        Sign Out
-                     </Button>
-                  </Link>
-               </div>
-            </div>
-         </Toolbar>
-      </AppBar>
-   );
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              <Button
+                className={classes.navlinksbutton}
+                onClick={() =>
+                  Meteor.logout(error => {
+                    console.log(error);
+                  })
+                }
+                variant="contained"
+              >
+                Sign Out
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default withTracker(() => {
-<<<<<<< HEAD
-  // console.log(Meteor.userId());
   return {
     currentUser: Meteor.user()
   };
-=======
-   console.log(Meteor.userId());
-   return {
-      currentUser: Meteor.user()
-   };
->>>>>>> 5cf274092e5c4e26c74269900eb568f675f50413
 })(withStyles(styles)(Header));
