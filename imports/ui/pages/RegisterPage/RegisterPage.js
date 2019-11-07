@@ -107,30 +107,51 @@ const RegisterPage = ({ classes }) => {
                     )}
                   />
                 </div>
-                <h2 className={classes.receiver}>
-                  Would You Like to be a Receiver?
-                </h2>
-                <div className={classes.buttonsYesNo}>
-                  <label className={classes.buttonsYes}>
-                    <Field
-                      name="receiver"
-                      component="input"
-                      type="radio"
-                      value="true"
-                      className={classes.inputNo}
-                    />{" "}
-                    <span className={classes.yes}>Yes</span>
-                  </label>
-                  <label className={classes.buttonsNo}>
-                    <Field
-                      name="receiver"
-                      component="input"
-                      type="radio"
-                      value="false"
-                      className={classes.inputNo}
-                    />{" "}
-                    <span className={classes.yes}>No</span>
-                  </label>
+                <div className={classes.needFlex}>
+                  <Field
+                    name="address"
+                    render={({ input, meta }) => (
+                      <TextField
+                        id="standard-with-placeholder"
+                        label="Address"
+                        placeholder="Address"
+                        className={classes.field}
+                        margin="normal"
+                        {...input}
+                        value={input.value}
+                      />
+                    )}
+                  />
+                  <Field
+                    name="password1"
+                    render={({ input, meta }) => (
+                      <TextField
+                        id="standard-with-placeholder"
+                        label="Password"
+                        placeholder="Password"
+                        className={classes.field}
+                        margin="normal"
+                        {...input}
+                        value={input.value}
+                        type="password"
+                      />
+                    )}
+                  />
+                  <Field
+                    name="password"
+                    render={({ input, meta }) => (
+                      <TextField
+                        id="standard-with-placeholder"
+                        label="Repeat Password"
+                        placeholder="Repeat Password"
+                        className={classes.field}
+                        margin="normal"
+                        {...input}
+                        value={input.value}
+                        type="password"
+                      />
+                    )}
+                  />
                 </div>
               </div>
               <h2 className={classes.receiver}>
@@ -201,4 +222,5 @@ const RegisterPage = ({ classes }) => {
     </div>
   );
 };
+
 export default withStyles(styles)(RegisterPage);
