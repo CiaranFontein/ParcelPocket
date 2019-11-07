@@ -6,16 +6,13 @@ import styles from "./styles";
 import RecipientMap from "../../components/RecipientMap";
 import Recipient from "../../components/Recipient";
 import { withTracker } from "meteor/react-meteor-data";
-import { Meteor } from "meteor/meteor";
 
-const Recipients = ({ classes, recipients, currentUserId, currentUser }) => {
+const Recipients = ({ classes, recipients, currentUser }) => {
   const [transitValue, setTransitValue] = React.useState(10);
   const [distanceValue, setDistanceValue] = React.useState(10);
-  // console.log(recipients);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  // console.log(currentUserId);
   return (
     <div className={classes.recipientsPage}>
       <div className={classes.recipientsPageContainer}>
@@ -54,7 +51,11 @@ const Recipients = ({ classes, recipients, currentUserId, currentUser }) => {
         </div>
         <div className={classes.recipientMapContainer}>
           {recipients.length > 0 && (
-            <RecipientMap user={currentUser} recipients={recipients} />
+            <RecipientMap
+              user={currentUser}
+              recipients={recipients}
+              transitValue={transitValue}
+            />
           )}
         </div>
         <div className={classes.recipientListContainer}>
@@ -84,5 +85,3 @@ export default withTracker(() => {
     currentUserId: Meteor.userId()
   };
 })(withStyles(styles)(Recipients));
-
-// db.users.find({ $and: [{ _id: {$ne:Meteor.userId()}}, { "profile.reciever" : true}]} ).
