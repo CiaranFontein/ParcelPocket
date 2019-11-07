@@ -35,29 +35,29 @@ const Header = ({ classes, currentUser }) => {
       setAnchorEl(null);
    };
 
-   console.log(currentUser);
-   // const options = [
-   //   {
-   //     path: "/profile",
-   //     name: "Profile",
-   //     icon: <Fingerprint fontSize="default" />
-   //   }
-   //   {
-   //     path: "/login",
-   //     name: "Sign Out",
-   //     icon: <PowerSettingsNew fontSize="default" />
-   //   }
-   // ];
-   return (
-      <AppBar className={classes.appBar} position="static" color="default">
-         <Toolbar className={classes.flexToolbar}>
-            <Link className={classes.logoimg} to="/recipients">
-               <img
-                  src="http://localhost:3000/images/white_small_transparent.png"
-                  alt="logo"
-                  width="100px"
-               />
-            </Link>
+  // console.log(currentUser);
+  // const options = [
+  //   {
+  //     path: "/profile",
+  //     name: "Profile",
+  //     icon: <Fingerprint fontSize="default" />
+  //   }
+  //   {
+  //     path: "/login",
+  //     name: "Sign Out",
+  //     icon: <PowerSettingsNew fontSize="default" />
+  //   }
+  // ];
+  return (
+    <AppBar className={classes.appBar} position="static" color="default">
+      <Toolbar className={classes.flexToolbar}>
+        <Link className={classes.logoimg} to="/recipients">
+          <img
+            src="http://localhost:3000/images/white_small_transparent.png"
+            alt="logo"
+            width="100px"
+          />
+        </Link>
 
             <div className={classes.mainlinks}>
                <Link to="/recipients" style={{ textDecoration: "none" }}>
@@ -120,8 +120,15 @@ const Header = ({ classes, currentUser }) => {
 };
 
 export default withTracker(() => {
+<<<<<<< HEAD
+  // console.log(Meteor.userId());
+  return {
+    currentUser: Meteor.user()
+  };
+=======
    console.log(Meteor.userId());
    return {
       currentUser: Meteor.user()
    };
+>>>>>>> 5cf274092e5c4e26c74269900eb568f675f50413
 })(withStyles(styles)(Header));

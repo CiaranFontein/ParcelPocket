@@ -42,6 +42,9 @@ class LoginForm extends Component {
           render={({ handleSubmit }) => (
             <form
               onSubmit={event => {
+                {
+                  addUser;
+                }
                 event.preventDefault();
                 handleSubmit();
               }}
@@ -109,4 +112,3 @@ class LoginForm extends Component {
 }
 
 export default withStyles(styles)(LoginForm);
-//{this.state.error.message}
