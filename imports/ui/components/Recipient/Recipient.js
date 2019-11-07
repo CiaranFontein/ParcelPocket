@@ -8,7 +8,7 @@ const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
   addOrder = () => {
     Meteor.call("orders.addOrder", currentUserId, user._id, transitValue);
   };
-  return (
+  return recipient ? (
     <div className={classes.recipientContainer}>
       <div className={classes.recipientAvatar}>
         {/* <Gravatar email={user.email} /> */}
@@ -22,6 +22,8 @@ const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
       <div className={classes.recipientScore}>{recipient.profile.score}</div>
       <Button onClick={addOrder}>Select This Recipient</Button>
     </div>
+  ) : (
+    ""
   );
 };
 
