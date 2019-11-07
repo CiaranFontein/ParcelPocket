@@ -2,27 +2,10 @@ import React from "react";
 import { Meteor } from "meteor/meteor";
 import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
-import { flexbox } from "@material-ui/system";
 import { withTracker } from "meteor/react-meteor-data";
 import styles from "./styles";
-import {
-  withStyles,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Button,
-  MenuItem,
-  Menu,
-  Typography,
-  ListItemIcon
-} from "@material-ui/core";
+import { withStyles, AppBar, Toolbar, Button } from "@material-ui/core";
 import { withRouter } from "react-router";
-import {
-  MoreVert,
-  Fingerprint,
-  AddCircle,
-  PowerSettingsNew
-} from "@material-ui/icons";
 
 const Header = ({ classes, currentUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -35,19 +18,6 @@ const Header = ({ classes, currentUser }) => {
     setAnchorEl(null);
   };
 
-  // console.log(currentUser);
-  // const options = [
-  //   {
-  //     path: "/profile",
-  //     name: "Profile",
-  //     icon: <Fingerprint fontSize="default" />
-  //   }
-  //   {
-  //     path: "/login",
-  //     name: "Sign Out",
-  //     icon: <PowerSettingsNew fontSize="default" />
-  //   }
-  // ];
   return (
     <AppBar className={classes.appBar} position="static" color="default">
       <Toolbar className={classes.flexToolbar}>
@@ -117,7 +87,6 @@ const Header = ({ classes, currentUser }) => {
 };
 
 export default withTracker(() => {
-  // console.log(Meteor.userId());
   return {
     currentUser: Meteor.user()
   };
