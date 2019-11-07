@@ -6,7 +6,7 @@ import { withTracker } from "meteor/react-meteor-data";
 
 const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
   addOrder = () => {
-    Meteor.call("orders.addOrder", currentUserId, user._id, transitValue);
+    Meteor.call("orders.addOrder", currentUserId, recipient._id, transitValue);
   };
   return recipient ? (
     <div className={classes.recipientContainer}>
