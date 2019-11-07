@@ -2,7 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 import Gravatar from "react-gravatar";
-import AddOrder from "../../components/AddOrder/AddOrder";
+import AddOrder from "../../components/AddOrder";
 
 const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
   return recipient ? (
