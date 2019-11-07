@@ -42,9 +42,6 @@ class LoginForm extends Component {
           render={({ handleSubmit }) => (
             <form
               onSubmit={event => {
-                {
-                  addUser;
-                }
                 event.preventDefault();
                 handleSubmit();
               }}
