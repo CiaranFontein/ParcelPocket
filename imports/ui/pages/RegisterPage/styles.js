@@ -122,9 +122,13 @@ const styles = (theme) => ({
       textAlign: "right",
       marginTop: 30,
       width: "94%",
-      marginBottom: 20,
+      marginBottom: 0,
       marginLeft: "auto",
       marginRight: "auto"
+   },
+   back: {
+      textDecoration: "none",
+      fontSize: "1.2em"
    },
    submit: {
       fontSize: "2em"
