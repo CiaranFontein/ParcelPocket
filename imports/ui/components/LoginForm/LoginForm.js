@@ -98,10 +98,15 @@ class LoginForm extends Component {
             </form>
           )}
         />
-        {this.state.error && <p>{this.state.error.message}</p>}
+        {this.state.error && (
+          <p className={classes.errorMessage}>
+            Username or Password do not match.
+          </p>
+        )}
       </div>
     );
   }
 }
 
 export default withStyles(styles)(LoginForm);
+//{this.state.error.message}

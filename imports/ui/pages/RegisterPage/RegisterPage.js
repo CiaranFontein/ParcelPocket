@@ -12,10 +12,17 @@ import {
    StyledRadio,
    FormControl
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import styles from "./styles";
 
-const addUser = (values) => {
-   console.log(values);
+const API_KEY = Meteor.settings.public.REACT_APP_GOOGLE_API_KEY;
+
+const addUser = async (values) => {
+   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${values.address}&key=${API_KEY}`;
+   const result = await fetch(url);
+   const location = await result.json();
+   values.location = location.results[0].geometry.location;
+   values.placeId = location.results[0].place_id;
    Meteor.call("users.addUser", values);
 };
 
@@ -34,7 +41,7 @@ const RegisterPage = ({ classes }) => {
          <div className={classes.registerFormContainer}>
             <h1>Register</h1>
             <Form
-               onSubmit={addUser}
+               onSubmit={(values) => addUser(values)}
                // validate={true}
                render={({ handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
@@ -191,6 +198,9 @@ const RegisterPage = ({ classes }) => {
                            <span className={classes.submit}>Submit</span>
                         </button>
                      </div>
+                     <Link className={classes.back} to="/login">
+                        <span>Back to login</span>
+                     </Link>
                   </form>
                )}
             />
@@ -198,5 +208,4 @@ const RegisterPage = ({ classes }) => {
       </div>
    );
 };
-
 export default withStyles(styles)(RegisterPage);
