@@ -65,9 +65,13 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
             <button
                className={classes.buttonOnUp}
                onClick={() => {
-                  Meteor.call("users.addRating", recipient, (err, res) => {
-                     console.log(err, res);
-                  });
+                  Meteor.call(
+                     "users.addRating",
+                     order.recipient,
+                     (err, res) => {
+                        console.log(err, res);
+                     }
+                  );
                   Meteor.call(
                      "orders.changeStatusToFinished",
                      order,
@@ -75,7 +79,6 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
                         console.log(err, res);
                      }
                   );
-                  console.log(recipient.score);
                }}
             >
                <ThumbUpIcon />
@@ -83,9 +86,13 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
             <button
                className={classes.buttonOnDown}
                onClick={() => {
-                  Meteor.call("users.subtractRating", recipient, (err, res) => {
-                     console.log(err, res);
-                  });
+                  Meteor.call(
+                     "users.subtractRating",
+                     order.recipient,
+                     (err, res) => {
+                        console.log(err, res);
+                     }
+                  );
                   Meteor.call(
                      "orders.changeStatusToFinished",
                      order,
@@ -93,8 +100,6 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
                         console.log(err, res);
                      }
                   );
-
-                  console.log(recipient.score);
                }}
             >
                <ThumbDownIcon />

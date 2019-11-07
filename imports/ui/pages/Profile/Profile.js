@@ -7,11 +7,7 @@ import { TextField } from "@material-ui/core";
 import { withTracker } from "meteor/react-meteor-data";
 
 const updateProfile = values => {
-  console.log(values);
-  // // Meteor.call("users.addUser", values);
   Meteor.users.update(Meteor.userId(), { $set: { profile: values } });
-  // const updateUser = Meteor.users.find();
-  // // console.log(updateUser);
 };
 
 const Profile = props => {
@@ -30,7 +26,6 @@ const Profile = props => {
             receiver: currentUser.profile.receiver
           }}
           onSubmit={values => updateProfile(values)}
-          // validate={true}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <div className={classes.flexContainer}>
@@ -154,7 +149,6 @@ const Profile = props => {
 };
 
 export default withTracker(() => {
-  console.log(Meteor.userId());
   return {
     currentUser: Meteor.users.findOne({ _id: Meteor.userId() })
   };
