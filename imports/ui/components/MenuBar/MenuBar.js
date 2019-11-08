@@ -6,6 +6,7 @@ import { withTracker } from "meteor/react-meteor-data";
 import styles from "./styles";
 import { withStyles, AppBar, Toolbar, Button } from "@material-ui/core";
 import { withRouter } from "react-router";
+import PropTypes from "prop-types";
 
 const Header = ({ classes, currentUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -84,6 +85,11 @@ const Header = ({ classes, currentUser }) => {
       </Toolbar>
     </AppBar>
   );
+};
+
+Header.propTypes = {
+  classes: PropTypes.any.isRequired,
+  currentUser: PropTypes.object
 };
 
 export default withTracker(() => {
