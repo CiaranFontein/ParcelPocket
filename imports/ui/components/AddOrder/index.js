@@ -1,3 +1,3 @@
-import AddOrder from "AddOrder";
+import AddOrder from "./AddOrder";
 
 export default AddOrder;
