@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 import Gravatar from "react-gravatar";
+import Loading from "../Loading";
 
 const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
   return recipient ? (
@@ -18,7 +19,7 @@ const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
       <div className={classes.recipientScore}>{recipient.profile.score}</div>
     </div>
   ) : (
-    ""
+    <Loading />
   );
 };
 

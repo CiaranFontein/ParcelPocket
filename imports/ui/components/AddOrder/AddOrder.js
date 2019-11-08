@@ -8,7 +8,6 @@ class AddOrder extends Component {
     super(props);
   }
   addOrder = () => {
-    console.log(JSON.stringify(this.props));
     Meteor.call(
       "orders.addOrder",
       this.props.currentUserId,

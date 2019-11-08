@@ -4,18 +4,19 @@ import styles from "./styles";
 import YourOrdersListItem from "../../components/YourOrdersListItem";
 import { withTracker } from "meteor/react-meteor-data";
 import { Orders } from "../../../api/orders";
+import Loading from "../../components/Loading";
 
 const YourOrders = ({ orders, classes }) => {
-   return orders.length > 0
-      ? orders.map((order) => (
-           <YourOrdersListItem key={order._id} order={order} />
-        ))
-      : "loading";
+  return orders.length > 0 ? (
+    orders.map(order => <YourOrdersListItem key={order._id} order={order} />)
+  ) : (
+    <Loading />
+  );
 };
 
 export default withTracker(() => {
-   Meteor.subscribe("orders");
-   return {
-      orders: Orders.find({}).fetch()
-   };
+  Meteor.subscribe("orders");
+  return {
+    orders: Orders.find({}).fetch()
+  };
 })(withStyles(styles)(YourOrders));

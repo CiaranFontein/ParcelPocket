@@ -1,6 +1,7 @@
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import React, { Component, Fragment } from "react";
 import Recipient from "../Recipient";
+import Loading from "../Loading";
 const API_KEY = Meteor.settings.public.REACT_APP_GOOGLE_API_KEY;
 
 class RecipientMap extends Component {
@@ -14,7 +15,6 @@ class RecipientMap extends Component {
   }
 
   onMarkerClick = (props, marker) => {
-    console.log(props);
     return this.setState({
       activeMarker: marker,
       selectedPlace: props,
@@ -36,7 +36,7 @@ class RecipientMap extends Component {
   //const directionsService = new google.maps.DirectionsService();
   render() {
     const { user, google, recipients, transitValue } = this.props;
-    if (!this.props.loaded) return <div>Loading...</div>;
+    if (!this.props.loaded) return <Loading />;
     return (
       <Fragment>
         <Map google={google} zoom={15} initialCenter={user.profile.location}>
@@ -57,10 +57,7 @@ class RecipientMap extends Component {
             visible={this.state.showingInfoWindow}
             onClick={this.addOrder}
           >
-            <Recipient
-              recipient={this.state.selectedUser}
-              transitValue={transitValue}
-            />
+            <Recipient recipient={this.state.selectedUser} />
           </InfoWindow>
         </Map>
       </Fragment>

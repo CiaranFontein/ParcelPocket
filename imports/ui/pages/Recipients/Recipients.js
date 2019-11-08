@@ -9,7 +9,6 @@ import AddOrder from "../../components/AddOrder";
 import { withTracker } from "meteor/react-meteor-data";
 
 const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
-  console.log(currentUser);
   const [transitValue, setTransitValue] = React.useState(10);
   const [distanceValue, setDistanceValue] = React.useState(10);
   const handleChange = (event, newValue) => {

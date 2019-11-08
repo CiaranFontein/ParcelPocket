@@ -32,7 +32,6 @@ class LoginForm extends Component {
   };
 
   render() {
-    console.log(this.state.error);
     const { classes } = this.props;
 
     return (
