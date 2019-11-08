@@ -10,7 +10,6 @@ import { withTracker } from "meteor/react-meteor-data";
 import PropTypes from "prop-types";
 
 const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
-   console.log(currentUser);
    const [transitValue, setTransitValue] = React.useState(10);
    const [distanceValue, setDistanceValue] = React.useState(10);
    const handleChange = (event, newValue) => {

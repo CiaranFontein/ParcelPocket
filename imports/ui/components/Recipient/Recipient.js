@@ -5,7 +5,6 @@ import Gravatar from "react-gravatar";
 import PropTypes from "prop-types";
 
 const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
-   console.log(currentUserId);
    return recipient ? (
       <div className={classes.recipientContainer}>
          <div className={classes.recipientAvatar}>
