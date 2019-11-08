@@ -1,7 +1,7 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import Gravatar from "react-gravatar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { withTracker } from "meteor/react-meteor-data";
 import styles from "./styles";
 import { withStyles, AppBar, Toolbar, Button } from "@material-ui/core";
@@ -31,17 +31,29 @@ const Header = ({ classes, currentUser }) => {
             </Link>
 
             <div className={classes.mainlinks}>
-               <Link to="/recipients" style={{ textDecoration: "none" }}>
+               <NavLink
+                  activeClassName={classes.active}
+                  to="/recipients"
+                  style={{ textDecoration: "none" }}
+               >
                   <Button className={classes.iconButton}>Create Order</Button>
-               </Link>
+               </NavLink>
 
-               <Link to="/orders" style={{ textDecoration: "none" }}>
+               <NavLink
+                  activeClassName={classes.active}
+                  to="/orders"
+                  style={{ textDecoration: "none" }}
+               >
                   <Button className={classes.iconButton}>Orders</Button>
-               </Link>
+               </NavLink>
 
-               <Link to="/parcels" style={{ textDecoration: "none" }}>
+               <NavLink
+                  activeClassName={classes.active}
+                  to="/parcels"
+                  style={{ textDecoration: "none" }}
+               >
                   <Button className={classes.iconButton}>Parcels</Button>
-               </Link>
+               </NavLink>
             </div>
 
             <div className={classes.profiledetails}>

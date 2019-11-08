@@ -17,7 +17,12 @@ class AddOrder extends Component {
     );
   };
   render() {
-    return <Button onClick={this.addOrder}>Create Order</Button>;
+    const { classes } = this.props;
+    return (
+      <Button className={classes.button} onClick={this.addOrder}>
+        Create Order
+      </Button>
+    );
   }
 }
 

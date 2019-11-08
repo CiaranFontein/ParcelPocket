@@ -18,7 +18,6 @@ const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
   return (
     <div className={classes.recipientsPage}>
       <div className={classes.recipientsPageContainer}>
-        Recipients
         <div className={classes.optionsPanel}>
           <div className={classes.deliveryWindow}>
             <Typography id="max-transit-time-slider" gutterBottom>
@@ -63,23 +62,32 @@ const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
         <div className={classes.recipientListContainer}>
           {recipients.length > 0 &&
             recipients.map((user, index) => (
-              <Fragment key={index}>
-                <Recipient
-                  recipient={user}
-                  currentUserId={currentUserId}
-                  transitValue={transitValue}
-                />
-                <AddOrder
-                  currentUserId={currentUserId}
-                  recipient={user}
-                  transitValue={transitValue}
-                />
+              <Fragment className={classes.recipButton} key={index}>
+                <div className={classes.recipButton}>
+                  <Recipient
+                    recipient={user}
+                    currentUserId={currentUserId}
+                    transitValue={transitValue}
+                  />
+                  <AddOrder
+                    currentUserId={currentUserId}
+                    recipient={user}
+                    transitValue={transitValue}
+                  />
+                </div>
               </Fragment>
             ))}
         </div>
       </div>
     </div>
   );
+};
+
+Recipients.propTypes = {
+  classes: PropTypes.any,
+  recipients: PropTypes.array.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  currentUserId: PropTypes.string.isRequired
 };
 
 export default withTracker(() => {

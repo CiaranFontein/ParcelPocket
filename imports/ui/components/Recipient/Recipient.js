@@ -7,17 +7,33 @@ import PropTypes from "prop-types";
 
 const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
   return recipient ? (
-    <div className={classes.recipientContainer}>
-      <div className={classes.recipientAvatar}>
-        <Gravatar email={recipient.email} />
+    <div className={classes.itemsContainer}>
+      <div className={classes.leftContainer}>
+        <div className={classes.nameAvatarContainer}>
+          <div className={classes.userAvatar}>
+            <Gravatar email={recipient.email} />
+          </div>
+          <div className={classes.userName}>
+            {recipient.profile.firstName + " " + recipient.profile.lastName}
+          </div>
+        </div>
+        <div className={classes.dateInfo}>
+          <span></span>
+        </div>
+        <div className={classes.orderNumber}>
+          Address:
+          <span className={classes.orderIdAndDate}>
+            {" "}
+            {recipient.profile.address}{" "}
+          </span>
+        </div>
       </div>
-      <div className={classes.recipientName}>
-        {recipient.profile.firstName} {recipient.profile.lastName}
+      <div className={classes.rightContainer}>
+        <div>
+          Score:
+          <span className={classes.orderStatus}>{recipient.profile.score}</span>
+        </div>
       </div>
-      <div className={classes.recipientAddress}>
-        {recipient.profile.address}
-      </div>
-      <div className={classes.recipientScore}>{recipient.profile.score}</div>
     </div>
   ) : (
     <Loading />

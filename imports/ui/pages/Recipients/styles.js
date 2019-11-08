@@ -26,7 +26,8 @@ const styles = theme => ({
     flexDirection: "column",
     justifyContent: "center",
     margin: theme.spacing(2),
-    alignItems: "center"
+    alignItems: "center",
+    display: "none"
   },
   maxRange: {
     display: "flex",
@@ -34,7 +35,8 @@ const styles = theme => ({
     flexDirection: "column",
     justifyContent: "center",
     margin: theme.spacing(1),
-    alignItems: "center"
+    alignItems: "center",
+    display: "none"
   },
   recipientMapContainer: {
     position: "relative",
@@ -49,6 +51,12 @@ const styles = theme => ({
     margin: theme.spacing(2),
     alignItems: "center",
     width: "100%"
+  },
+  recipButton: {
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+    marginLeft: 400
   }
 });
 export default styles;
