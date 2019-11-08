@@ -26,7 +26,7 @@ const addUser = async (values) => {
          firstName: values.firstName,
          lastName: values.lastName,
          address: values.address,
-         reciever: values.receiver[0],
+         reciever: values.receiver,
          score: 0
       }
    };
@@ -35,10 +35,6 @@ const addUser = async (values) => {
    const location = await result.json();
    values.location = location.results[0].geometry.location;
    values.placeId = location.results[0].place_id;
-   console.log(values);
-};
-const signIn = ({ email, password }) => {
-   Meteor.loginWithPassword(email, password);
    Accounts.createUser(user, (error) => {
       if (error) console.log(error);
    });
