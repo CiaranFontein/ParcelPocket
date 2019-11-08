@@ -7,6 +7,7 @@ import RecipientMap from "../../components/RecipientMap";
 import Recipient from "../../components/Recipient";
 import AddOrder from "../../components/AddOrder";
 import { withTracker } from "meteor/react-meteor-data";
+import PropTypes from "prop-types";
 
 const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
   const [transitValue, setTransitValue] = React.useState(10);
@@ -79,6 +80,13 @@ const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
       </div>
     </div>
   );
+};
+
+Recipients.propTypes = {
+  classes: PropTypes.any,
+  recipients: PropTypes.array.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  currentUserId: PropTypes.string.isRequired
 };
 
 export default withTracker(() => {

@@ -5,6 +5,8 @@ import styles from "./styles";
 import { Form, Field } from "react-final-form";
 import { TextField } from "@material-ui/core";
 import { withTracker } from "meteor/react-meteor-data";
+import PropTypes from "prop-types";
+import Loading from "../../components/Loading";
 
 const API_KEY = Meteor.settings.public.REACT_APP_GOOGLE_API_KEY;
 
@@ -152,8 +154,13 @@ const Profile = props => {
       </div>
     </div>
   ) : (
-    ""
+    <Loading />
   );
+};
+
+Profile.propTypes = {
+  classes: PropTypes.any,
+  currentUser: PropTypes.object.isRequired
 };
 
 export default withTracker(() => {

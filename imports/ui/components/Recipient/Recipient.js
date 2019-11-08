@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 import Gravatar from "react-gravatar";
 import Loading from "../Loading";
+import PropTypes from "prop-types";
 
 const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
   return recipient ? (
@@ -21,6 +22,12 @@ const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
   ) : (
     <Loading />
   );
+};
+
+Recipient.propTypes = {
+  classes: PropTypes.any.isRequired,
+  currentUserId: PropTypes.string.isRequired,
+  recipient: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Recipient);

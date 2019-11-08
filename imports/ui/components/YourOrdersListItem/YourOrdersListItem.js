@@ -6,6 +6,7 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
+import PropTypes from "prop-types";
 
 const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
    let owner = null;
@@ -107,8 +108,6 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
          </React.Fragment>
       );
    }
-   console.log(currentUser);
-   console.log(order);
 
    return (
       users.length > 1 &&
@@ -151,6 +150,13 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
          </div>
       )
    );
+};
+
+YourOrdersListItem.propTypes = {
+   classes: PropTypes.any.isRequired,
+   currentUser: PropTypes.object.isRequired,
+   order: PropTypes.object.isRequired,
+   users: PropTypes.array.isRequired
 };
 
 export default withTracker(() => {
