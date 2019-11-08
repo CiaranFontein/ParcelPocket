@@ -32,14 +32,8 @@ class LoginForm extends Component {
       );
    };
 
-<<<<<<< HEAD
-  render() {
-    const { classes } = this.props;
-=======
    render() {
-      console.log(this.state.error);
       const { classes } = this.props;
->>>>>>> 515bb9dec79a6bffa1371d56f6589d8a46aa1497
 
       return (
          <div>
