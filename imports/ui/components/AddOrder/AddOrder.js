@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 class AddOrder extends Component {
    constructor(props) {
       super(props);
+      this.classes = props.classes;
    }
    addOrder = () => {
       Meteor.call(
@@ -16,8 +17,12 @@ class AddOrder extends Component {
          this.props.transitValue
       );
    };
-   render() {
-      return <Button onClick={this.addOrder}>Create Order</Button>;
+   render(classes) {
+      return (
+         <Button className={this.classes.button} onClick={this.addOrder}>
+            Create Order
+         </Button>
+      );
    }
 }
 
