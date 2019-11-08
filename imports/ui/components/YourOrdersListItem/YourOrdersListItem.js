@@ -107,6 +107,8 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
          </React.Fragment>
       );
    }
+   console.log(currentUser);
+   console.log(order);
 
    return (
       users.length > 1 &&
