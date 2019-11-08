@@ -19,6 +19,11 @@ import styles from "./styles";
 const API_KEY = Meteor.settings.public.REACT_APP_GOOGLE_API_KEY;
 
 const addUser = async values => {
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${values.address}&key=${API_KEY}`;
+  const result = await fetch(url);
+  const location = await result.json();
+  values.location = location.results[0].geometry.location;
+  values.placeId = location.results[0].place_id;
   const user = {
     email: values.email,
     password: values.password,
@@ -27,14 +32,11 @@ const addUser = async values => {
       lastName: values.lastName,
       address: values.address,
       reciever: values.receiver,
-      score: 0
+      score: 0,
+      location: values.location,
+      placeId: values.placeId
     }
   };
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${values.address}&key=${API_KEY}`;
-  const result = await fetch(url);
-  const location = await result.json();
-  values.location = location.results[0].geometry.location;
-  values.placeId = location.results[0].place_id;
   Accounts.createUser(user, error => {
     if (error) console.log(error);
   });
