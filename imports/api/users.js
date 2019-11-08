@@ -9,9 +9,6 @@ Meteor.methods({
       .find(id, { profile: { score: 1 } })
       .fetch()[0];
     let newScore = partialScore.profile.score + 1;
-    console.log(partialScore);
-    console.log(newScore);
-
     Meteor.users.update(id, {
       $set: { "profile.score": newScore }
     });
