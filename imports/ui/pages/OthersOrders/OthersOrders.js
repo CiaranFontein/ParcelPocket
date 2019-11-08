@@ -7,9 +7,19 @@ import { Orders } from "../../../api/orders";
 import Loading from "../../components/Loading";
 import PropTypes from "prop-types";
 
-const OthersOrders = ({ orders, classes }) => {
-  return orders.length > 0 ? (
-    orders.map(order => <OthersOrdersListItem key={order._id} order={order} />)
+const OthersOrders = ({ currentUser, orders, classes }) => {
+  const othersOrders = orders.filter(
+    order => order.recipient === currentUser.id
+  );
+
+  return othersOrders.length >= 0 ? (
+    othersOrders.length === 0 ? (
+      <div>You are not the recipient for any orders!</div>
+    ) : (
+      othersOrders.map(order => (
+        <OthersOrdersListItem key={order._id} order={order} />
+      ))
+    )
   ) : (
     <Loading />
   );
@@ -23,6 +33,7 @@ OthersOrders.propTypes = {
 export default withTracker(() => {
   Meteor.subscribe("orders");
   return {
-    orders: Orders.find({}).fetch()
+    orders: Orders.find({}).fetch(),
+    currentUser: Meteor.user()
   };
 })(withStyles(styles)(OthersOrders));

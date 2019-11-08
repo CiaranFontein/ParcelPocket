@@ -78,48 +78,44 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
   }
 
   return (
-    users.length > 1 &&
-    currentUser &&
-    currentUser._id === order.recipient && (
-      <div className={classes.itemsContainer}>
-        <div className={classes.leftContainer}>
-          <div className={classes.nameAvatarContainer}>
-            <div className={classes.userAvatar}>
-              <Gravatar
-                className={classes.userAvatarImg}
-                email={owner.emails[0].address}
-              />
-            </div>
-            <div className={classes.userName}>
-              {owner.profile.firstName + " " + owner.profile.lastName}
-            </div>
+    <div className={classes.itemsContainer}>
+      <div className={classes.leftContainer}>
+        <div className={classes.nameAvatarContainer}>
+          <div className={classes.userAvatar}>
+            <Gravatar
+              className={classes.userAvatarImg}
+              email={owner.emails[0].address}
+            />
           </div>
-          <div className={classes.dateInfo}>
-            <span></span>
-            {logDate}
-          </div>
-          <div className={classes.orderNumber}>
-            Order Number:
-            <span className={classes.orderIdAndDate}>{order._id}</span>
+          <div className={classes.userName}>
+            {owner.profile.firstName + " " + owner.profile.lastName}
           </div>
         </div>
-        <div className={classes.rightContainer}>
-          <div>
-            Order Status:
-            <span className={classes.orderStatus}>{order.status}</span>
-          </div>
-          <div>{logButton}</div>
+        <div className={classes.dateInfo}>
+          <span></span>
+          {logDate}
+        </div>
+        <div className={classes.orderNumber}>
+          Order Number:
+          <span className={classes.orderIdAndDate}>{order._id}</span>
         </div>
       </div>
-    )
+      <div className={classes.rightContainer}>
+        <div>
+          Order Status:
+          <span className={classes.orderStatus}>{order.status}</span>
+        </div>
+        <div>{logButton}</div>
+      </div>
+    </div>
   );
 };
 
 OthersOrdersListItem.propTypes = {
-   classes: PropTypes.any.isRequired,
-   currentUser: PropTypes.object.isRequired,
-   order: PropTypes.object.isRequired,
-   users: PropTypes.array.isRequired
+  classes: PropTypes.any.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  order: PropTypes.object.isRequired,
+  users: PropTypes.array.isRequired
 };
 
 export default withTracker(() => {
