@@ -3,6 +3,7 @@ import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
+import { Button } from "@material-ui/core";
 
 class AddOrder extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class AddOrder extends Component {
   }
 
   addOrder = () => {
+    console.log(JSON.stringify(this.props));
     Meteor.call(
       "orders.addOrder",
       this.props.currentUserId,
@@ -19,7 +21,7 @@ class AddOrder extends Component {
   };
 
   render() {
-    return <button onClick={this.addOrder}>Create Order</button>;
+    return <Button onClick={this.addOrder}>Create Order</Button>;
   }
 }
 export default withTracker(() => {

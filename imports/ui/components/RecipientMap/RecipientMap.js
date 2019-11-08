@@ -55,6 +55,7 @@ class RecipientMap extends Component {
             marker={this.state.activeMarker}
             onClose={this.onInfoWindowClose}
             visible={this.state.showingInfoWindow}
+            onClick={this.addOrder}
           >
             <Recipient
               recipient={this.state.selectedUser}
