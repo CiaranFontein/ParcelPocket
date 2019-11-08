@@ -188,6 +188,14 @@ class RegisterPage extends Component {
                     />
                   </div>
                 </div>
+                <div>
+                  {this.state.error && (
+                    <p className={classes.errorMessage}>
+                      Please Complete all fields and check password before
+                      Submitting.
+                    </p>
+                  )}
+                </div>
                 <h2 className={classes.receiver}>
                   Would You Like to be a Receiver?
                 </h2>
@@ -214,14 +222,6 @@ class RegisterPage extends Component {
                     />{" "}
                     <span className={classes.yes}>No</span>
                   </label>
-                </div>
-                <div>
-                  {this.state.error && (
-                    <p className={classes.errorMessage}>
-                      Please Complete all fields and check password before
-                      Submitting.
-                    </p>
-                  )}
                 </div>
 
                 <div className={classes.agreementConteiner}>
