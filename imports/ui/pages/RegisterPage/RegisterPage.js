@@ -188,14 +188,6 @@ class RegisterPage extends Component {
                     />
                   </div>
                 </div>
-                <div>
-                  {this.state.error && (
-                    <p className={classes.errorMessage}>
-                      Please Complete all fields and check password before
-                      Submitting.
-                    </p>
-                  )}
-                </div>
                 <h2 className={classes.receiver}>
                   Would You Like to be a Receiver?
                 </h2>
@@ -223,23 +215,11 @@ class RegisterPage extends Component {
                     <span className={classes.yes}>No</span>
                   </label>
                 </div>
-
                 <div className={classes.agreementConteiner}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum.
+                  laboris nisi ut aliquip ex ea commodo consequat.
                 </div>
                 <div className={classes.checkbox}>
                   <label>
@@ -258,12 +238,17 @@ class RegisterPage extends Component {
                     <span className={classes.submit}>Submit</span>
                   </button>
                 </div>
-                <Link className={classes.back} to="/login">
-                  <span>Back to login</span>
-                </Link>
+                <Link className={classes.back} to="/login"></Link>
               </form>
             )}
           />
+          {this.state.error && (
+            <p className={classes.errorMessage}>
+              Please Complete all fields and enter a valid email before
+              Submitting.
+            </p>
+          )}
+          <span>Back to login</span>
         </div>
       </div>
     );
