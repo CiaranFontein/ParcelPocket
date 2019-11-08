@@ -82,13 +82,6 @@ const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
   );
 };
 
-Recipients.propTypes = {
-  classes: PropTypes.any,
-  recipients: PropTypes.array.isRequired,
-  currentUser: PropTypes.object.isRequired,
-  currentUserId: PropTypes.string.isRequired
-};
-
 export default withTracker(() => {
   Meteor.subscribe("users");
   return {
