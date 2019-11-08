@@ -63,9 +63,8 @@ const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
         <div className={classes.recipientListContainer}>
           {recipients.length > 0 &&
             recipients.map((user, index) => (
-              <Fragment>
+              <Fragment key={index}>
                 <Recipient
-                  key={index}
                   recipient={user}
                   currentUserId={currentUserId}
                   transitValue={transitValue}

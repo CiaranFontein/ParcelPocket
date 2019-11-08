@@ -6,14 +6,20 @@ import { Form, Field } from "react-final-form";
 import { TextField } from "@material-ui/core";
 import { withTracker } from "meteor/react-meteor-data";
 
-const updateProfile = values => {
+const API_KEY = Meteor.settings.public.REACT_APP_GOOGLE_API_KEY;
+
+const updateProfile = async values => {
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${values.address}&key=${API_KEY}`;
+  const result = await fetch(url);
+  const location = await result.json();
+  values.location = location.results[0].geometry.location;
+  values.placeId = location.results[0].place_id;
   Meteor.users.update(Meteor.userId(), { $set: { profile: values } });
 };
 
 const Profile = props => {
-  console.log(props);
   const { currentUser, classes } = props;
-  return (
+  return currentUser ? (
     <div className={classes.registerContainer}>
       <div className={classes.registerFormContainer}>
         <h1>Update Profile</h1>
@@ -145,6 +151,8 @@ const Profile = props => {
         />
       </div>
     </div>
+  ) : (
+    ""
   );
 };
 

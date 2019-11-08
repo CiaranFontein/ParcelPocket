@@ -4,7 +4,6 @@ import styles from "./styles";
 import Gravatar from "react-gravatar";
 
 const Recipient = ({ classes, recipient, currentUserId, transitValue }) => {
-  console.log(currentUserId);
   return recipient ? (
     <div className={classes.recipientContainer}>
       <div className={classes.recipientAvatar}>
