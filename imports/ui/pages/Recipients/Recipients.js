@@ -1,21 +1,20 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import styles from "./styles";
 import RecipientMap from "../../components/RecipientMap";
 import Recipient from "../../components/Recipient";
+import AddOrder from "../../components/AddOrder";
 import { withTracker } from "meteor/react-meteor-data";
-import { Meteor } from "meteor/meteor";
 
-const Recipients = ({ classes, recipients, currentUserId, currentUser }) => {
+const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
+  console.log(currentUser);
   const [transitValue, setTransitValue] = React.useState(10);
   const [distanceValue, setDistanceValue] = React.useState(10);
-  // console.log(recipients);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  // console.log(currentUserId);
   return (
     <div className={classes.recipientsPage}>
       <div className={classes.recipientsPageContainer}>
@@ -54,17 +53,29 @@ const Recipients = ({ classes, recipients, currentUserId, currentUser }) => {
         </div>
         <div className={classes.recipientMapContainer}>
           {recipients.length > 0 && (
-            <RecipientMap user={currentUser} recipients={recipients} />
+            <RecipientMap
+              user={currentUser}
+              recipients={recipients}
+              transitValue={transitValue}
+            />
           )}
         </div>
         <div className={classes.recipientListContainer}>
           {recipients.length > 0 &&
             recipients.map((user, index) => (
-              <Recipient
-                key={index}
-                recipient={user}
-                transitValue={transitValue}
-              />
+              <Fragment>
+                <Recipient
+                  key={index}
+                  recipient={user}
+                  currentUserId={currentUserId}
+                  transitValue={transitValue}
+                />
+                <AddOrder
+                  currentUserId={currentUserId}
+                  recipient={user}
+                  transitValue={transitValue}
+                />
+              </Fragment>
             ))}
         </div>
       </div>
@@ -84,5 +95,3 @@ export default withTracker(() => {
     currentUserId: Meteor.userId()
   };
 })(withStyles(styles)(Recipients));
-
-// db.users.find({ $and: [{ _id: {$ne:Meteor.userId()}}, { "profile.reciever" : true}]} ).

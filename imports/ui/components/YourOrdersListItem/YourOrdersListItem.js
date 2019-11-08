@@ -27,7 +27,7 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
 
    const DateDelivered = new Date().toDateString();
 
-   if (order.status === "Complete") {
+   if (order.status === "Finished") {
       logDate = (
          <div>
             Delivered Date:
@@ -107,6 +107,8 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
          </React.Fragment>
       );
    }
+   console.log(currentUser);
+   console.log(order);
 
    return (
       users.length > 1 &&

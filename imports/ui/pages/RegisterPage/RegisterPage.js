@@ -19,6 +19,11 @@ import styles from "./styles";
 const API_KEY = Meteor.settings.public.REACT_APP_GOOGLE_API_KEY;
 
 const addUser = async values => {
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${values.address}&key=${API_KEY}`;
+  const result = await fetch(url);
+  const location = await result.json();
+  values.location = location.results[0].geometry.location;
+  values.placeId = location.results[0].place_id;
   const user = {
     email: values.email,
     password: values.password,
@@ -26,17 +31,12 @@ const addUser = async values => {
       firstName: values.firstName,
       lastName: values.lastName,
       address: values.address,
-      reciever: values.receiver[0],
-      score: 0
+      reciever: values.receiver,
+      score: 0,
+      location: values.location,
+      placeId: values.placeId
     }
   };
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${values.address}&key=${API_KEY}`;
-  const result = await fetch(url);
-  const location = await result.json();
-  values.location = location.results[0].geometry.location;
-  values.placeId = location.results[0].place_id;
-  console.log(values);
-
   Accounts.createUser(user, error => {
     if (error) console.log(error);
   });
@@ -45,11 +45,14 @@ const addUser = async values => {
 const RegisterPage = ({ classes }) => {
   return (
     <div className={classes.registerContainer}>
-      <img
-        className={classes.logo}
-        src="/images/white_small.png"
-        alt="pp logo"
-      />
+      <Link to="/login">
+        <img
+          className={classes.logo}
+          src="/images/white_small.png"
+          alt="pp logo"
+        />
+      </Link>
+
       <div className={classes.registerFormContainer}>
         <h1>Register</h1>
         <Form
@@ -217,4 +220,5 @@ const RegisterPage = ({ classes }) => {
     </div>
   );
 };
+
 export default withStyles(styles)(RegisterPage);
