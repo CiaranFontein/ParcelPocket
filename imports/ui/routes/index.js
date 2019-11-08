@@ -54,7 +54,7 @@ const _Routes = ({ currentUserId }) => {
                component={Profile}
                currentUserId={currentUserId}
             />
-            <Redirect from="*" to="/orders" />
+            <Redirect from="*" to="/recipients" />
          </Switch>
       </Fragment>
    );
