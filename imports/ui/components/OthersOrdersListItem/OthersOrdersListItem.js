@@ -4,6 +4,7 @@ import styles from "./styles";
 import Gravatar from "react-gravatar";
 import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
+import PropTypes from "prop-types";
 
 const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
    let owner = null;
@@ -123,6 +124,13 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
          </div>
       )
    );
+};
+
+OthersOrdersListItem.propTypes = {
+   classes: PropTypes.any.isRequired,
+   currentUser: PropTypes.object.isRequired,
+   order: PropTypes.object.isRequired,
+   users: PropTypes.array.isRequired
 };
 
 export default withTracker(() => {

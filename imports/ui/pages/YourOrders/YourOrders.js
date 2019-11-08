@@ -4,6 +4,7 @@ import styles from "./styles";
 import YourOrdersListItem from "../../components/YourOrdersListItem";
 import { withTracker } from "meteor/react-meteor-data";
 import { Orders } from "../../../api/orders";
+import PropTypes from "prop-types";
 
 const YourOrders = ({ orders, classes }) => {
    return orders.length > 0
@@ -11,6 +12,11 @@ const YourOrders = ({ orders, classes }) => {
            <YourOrdersListItem key={order._id} order={order} />
         ))
       : "loading";
+};
+
+YourOrders.propTypes = {
+   classes: PropTypes.any,
+   orders: PropTypes.array.isRequired
 };
 
 export default withTracker(() => {
