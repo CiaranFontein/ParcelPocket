@@ -48,7 +48,7 @@ const Header = ({ classes, currentUser }) => {
                <div className={classes.gravatarcontainer}>
                   <Gravatar
                      className={classes.gravatarimage}
-                     email="ciaran.fountain@gmail.com"
+                     email={currentUser && currentUser.emails[0].address}
                   />
                </div>
                <div className={classes.profilenamerating}>
