@@ -1,6 +1,7 @@
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import React, { Component, Fragment } from "react";
 import Recipient from "../Recipient";
+import Loading from "../Loading";
 const API_KEY = Meteor.settings.public.REACT_APP_GOOGLE_API_KEY;
 import PropTypes from "prop-types";
 
@@ -14,6 +15,16 @@ class RecipientMap extends Component {
       };
    }
 
+<<<<<<< HEAD
+  onMarkerClick = (props, marker) => {
+    return this.setState({
+      activeMarker: marker,
+      selectedPlace: props,
+      showingInfoWindow: true,
+      selectedUser: marker.user
+    });
+  };
+=======
    onMarkerClick = (props, marker) => {
       console.log(props);
       return this.setState({
@@ -23,6 +34,7 @@ class RecipientMap extends Component {
          selectedUser: marker.user
       });
    };
+>>>>>>> 515bb9dec79a6bffa1371d56f6589d8a46aa1497
 
    onInfoWindowClose = () =>
       this.setState({
@@ -39,6 +51,38 @@ class RecipientMap extends Component {
       );
    };
 
+<<<<<<< HEAD
+  //const directionsService = new google.maps.DirectionsService();
+  render() {
+    const { user, google, recipients, transitValue } = this.props;
+    if (!this.props.loaded) return <Loading />;
+    return (
+      <Fragment>
+        <Map google={google} zoom={15} initialCenter={user.profile.location}>
+          {recipients.map((recipient, index) => {
+            return (
+              <Marker
+                key={index}
+                position={recipient.profile.location}
+                onClick={this.onMarkerClick}
+                name={recipient.profile.firstName}
+                user={recipient}
+              />
+            );
+          })}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            onClose={this.onInfoWindowClose}
+            visible={this.state.showingInfoWindow}
+            onClick={this.addOrder}
+          >
+            <Recipient recipient={this.state.selectedUser} />
+          </InfoWindow>
+        </Map>
+      </Fragment>
+    );
+  }
+=======
    //const directionsService = new google.maps.DirectionsService();
    render() {
       const { user, google, recipients, transitValue } = this.props;
@@ -76,6 +120,7 @@ class RecipientMap extends Component {
          </Fragment>
       );
    }
+>>>>>>> 515bb9dec79a6bffa1371d56f6589d8a46aa1497
 }
 
 RecipientMap.propTypes = {
