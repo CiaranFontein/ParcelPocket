@@ -10,7 +10,7 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
   let owner = null;
   let recipient = null;
 
-  if (users.length > 1) {
+  if (users.length > 1 && order) {
     users.map(user => {
       if (user._id === order.owner) {
         owner = user;
@@ -77,7 +77,7 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
     );
   }
 
-  return (
+  return owner ? (
     <div className={classes.itemsContainer}>
       <div className={classes.leftContainer}>
         <div className={classes.nameAvatarContainer}>
@@ -108,6 +108,8 @@ const OthersOrdersListItem = ({ classes, order, currentUser, users }) => {
         <div>{logButton}</div>
       </div>
     </div>
+  ) : (
+    ""
   );
 };
 
