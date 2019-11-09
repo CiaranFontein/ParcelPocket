@@ -62,7 +62,7 @@ const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
         <div className={classes.recipientListContainer}>
           {recipients.length > 0 &&
             recipients.map((user, index) => (
-              <Fragment className={classes.recipButton} key={index}>
+              <Fragment key={index}>
                 <div className={classes.recipButton}>
                   <Recipient
                     recipient={user}
@@ -86,7 +86,7 @@ const Recipients = ({ classes, recipients, currentUser, currentUserId }) => {
 Recipients.propTypes = {
   classes: PropTypes.any,
   recipients: PropTypes.array.isRequired,
-  currentUser: PropTypes.object.isRequired,
+  currentUser: PropTypes.object,
   currentUserId: PropTypes.string.isRequired
 };
 

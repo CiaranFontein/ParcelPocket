@@ -12,7 +12,7 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
   let owner = null;
   let recipient = null;
 
-  if (users.length > 1) {
+  if (users.length > 1 && order) {
     users.map(user => {
       if (user._id === order.owner) {
         owner = user;
@@ -90,14 +90,14 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
     );
   }
 
-  return (
+  return recipient ? (
     <div className={classes.itemsContainer}>
       <div className={classes.leftContainer}>
         <div className={classes.nameAvatarContainer}>
           <div className={classes.userAvatar}>
             <Gravatar
               className={classes.userAvatarImg}
-              email={recipient.emails[0].address}
+              email={currentUser.emails[0].address}
             />
           </div>
           <div className={classes.userName}>
@@ -124,6 +124,8 @@ const YourOrdersListItem = ({ classes, order, currentUser, users }) => {
         <div>{logButton}</div>
       </div>
     </div>
+  ) : (
+    ""
   );
 };
 

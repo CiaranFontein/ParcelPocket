@@ -14,7 +14,9 @@ const OthersOrders = ({ currentUser, orders, classes }) => {
 
   return othersOrders.length >= 0 ? (
     othersOrders.length === 0 ? (
-      <div>You are not the recipient for any orders!</div>
+      <div className={classes.notRecipientText}>
+        <div>You are not the recipient for any orders!</div>
+      </div>
     ) : (
       othersOrders.map(order => (
         <OthersOrdersListItem key={order._id} order={order} />
