@@ -33,7 +33,9 @@ class LoginForm extends Component {
   };
 
   render() {
+    console.log(this.state.error);
     const { classes } = this.props;
+
     return (
       <div>
         <Form
@@ -106,5 +108,9 @@ class LoginForm extends Component {
     );
   }
 }
+
+LoginForm.propTypes = {
+  props: PropTypes.any
+};
 
 export default withStyles(styles)(LoginForm);

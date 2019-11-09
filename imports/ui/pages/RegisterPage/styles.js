@@ -132,6 +132,10 @@ const styles = theme => ({
   },
   submit: {
     fontSize: "2em"
+  },
+  errorMessage: {
+    textAlign: "center",
+    color: "red"
   }
 });
 
