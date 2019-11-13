@@ -9,12 +9,12 @@ const styles = theme => ({
   },
   itemsContainer: {
     display: "flex",
-    width: "50%",
+    width: 400,
     margin: 20,
     border: "2px solid black"
   },
   leftContainer: {
-    width: "50%",
+    width: 400,
     padding: 20
   },
   nameAvatarContainer: {

@@ -9,9 +9,8 @@ import PropTypes from "prop-types";
 
 const OthersOrders = ({ currentUser, orders, classes }) => {
   const othersOrders = orders.filter(
-    order => order.recipient === currentUser.id
+    order => order.recipient === currentUser._id
   );
-
   return othersOrders.length >= 0 ? (
     othersOrders.length === 0 ? (
       <div className={classes.notRecipientText}>
